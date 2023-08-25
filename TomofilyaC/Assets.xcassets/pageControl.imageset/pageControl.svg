@@ -1,0 +1,8 @@
+<svg id="Icon_circle" data-name="Icon / circle" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="ellypsis" transform="translate(3 13)">
+    <circle id="Ellipse_234" data-name="Ellipse 234" cx="3" cy="3" r="3" transform="translate(10)" fill="#fff"/>
+    <circle id="Ellipse_235" data-name="Ellipse 235" cx="3" cy="3" r="3" transform="translate(-1)" fill="#767676"/>
+    <circle id="Ellipse_236" data-name="Ellipse 236" cx="3" cy="3" r="3" transform="translate(21)" fill="#767676"/>
+  </g>
+  <rect id="Rectangle_1281" data-name="Rectangle 1281" width="32" height="32" fill="none"/>
+</svg>

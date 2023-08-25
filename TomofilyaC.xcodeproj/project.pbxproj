@@ -7,23 +7,106 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E812AEAC2A94A5CC00E7CF9D /* SocialPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812AEAB2A94A5CC00E7CF9D /* SocialPlatform.swift */; };
+		E812AEAF2A94F9DD00E7CF9D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E812AEAE2A94F9DD00E7CF9D /* GoogleSignIn */; };
 		E8384FB72A7BF7A8005FE9F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8384FB62A7BF7A8005FE9F5 /* AppDelegate.swift */; };
 		E8384FB92A7BF7A8005FE9F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8384FB82A7BF7A8005FE9F5 /* SceneDelegate.swift */; };
-		E8384FBB2A7BF7A8005FE9F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8384FBA2A7BF7A8005FE9F5 /* ViewController.swift */; };
-		E8384FBE2A7BF7A8005FE9F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8384FBC2A7BF7A8005FE9F5 /* Main.storyboard */; };
+		E8384FBB2A7BF7A8005FE9F5 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8384FBA2A7BF7A8005FE9F5 /* OnboardingViewController.swift */; };
 		E8384FC02A7BF7AB005FE9F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8384FBF2A7BF7AB005FE9F5 /* Assets.xcassets */; };
 		E8384FC32A7BF7AB005FE9F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8384FC12A7BF7AB005FE9F5 /* LaunchScreen.storyboard */; };
+		E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8834C232A8F9286002853D8 /* ForgotPasswordViewController.swift */; };
+		E8834C272A8F92CB002853D8 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8834C262A8F92CB002853D8 /* ForgotPasswordView.swift */; };
+		E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BC16D82A97DF7600EDA8CB /* GidToken.swift */; };
+		E8DD60C42A8E39C100B5C3C9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */; };
+		E8DD60C62A8E39EB00B5C3C9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */; };
+		E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */; };
+		E8EAC63D2A90E90900BDFFA3 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC63C2A90E90900BDFFA3 /* VerificationViewController.swift */; };
+		E8EAC63F2A91F9E900BDFFA3 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC63E2A91F9E900BDFFA3 /* VerificationView.swift */; };
+		E8EAC6412A92CC7C00BDFFA3 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC6402A92CC7C00BDFFA3 /* ResetPasswordViewController.swift */; };
+		E8EAC6432A92CCAB00BDFFA3 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC6422A92CCAB00BDFFA3 /* ResetPasswordView.swift */; };
+		E8EAC6492A93A5EA00BDFFA3 /* MailVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC6482A93A5EA00BDFFA3 /* MailVerifyViewController.swift */; };
+		E8EAC64B2A93A60200BDFFA3 /* MailVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC64A2A93A60200BDFFA3 /* MailVerifyView.swift */; };
+		E8EAC65F2A93B36500BDFFA3 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC64D2A93B36400BDFFA3 /* Poppins-Medium.ttf */; };
+		E8EAC6602A93B36500BDFFA3 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC64E2A93B36400BDFFA3 /* Poppins-Italic.ttf */; };
+		E8EAC6612A93B36500BDFFA3 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC64F2A93B36400BDFFA3 /* Poppins-ExtraBoldItalic.ttf */; };
+		E8EAC6622A93B36500BDFFA3 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6502A93B36400BDFFA3 /* Poppins-Bold.ttf */; };
+		E8EAC6632A93B36500BDFFA3 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6512A93B36400BDFFA3 /* Poppins-SemiBold.ttf */; };
+		E8EAC6642A93B36500BDFFA3 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6522A93B36400BDFFA3 /* Poppins-SemiBoldItalic.ttf */; };
+		E8EAC6652A93B36500BDFFA3 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6532A93B36400BDFFA3 /* Poppins-Thin.ttf */; };
+		E8EAC6662A93B36500BDFFA3 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6542A93B36400BDFFA3 /* Poppins-ExtraLightItalic.ttf */; };
+		E8EAC6672A93B36500BDFFA3 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6552A93B36400BDFFA3 /* Poppins-ExtraLight.ttf */; };
+		E8EAC6682A93B36500BDFFA3 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6562A93B36400BDFFA3 /* Poppins-BlackItalic.ttf */; };
+		E8EAC6692A93B36500BDFFA3 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6572A93B36500BDFFA3 /* Poppins-Light.ttf */; };
+		E8EAC66A2A93B36500BDFFA3 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6582A93B36500BDFFA3 /* Poppins-ThinItalic.ttf */; };
+		E8EAC66B2A93B36500BDFFA3 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC6592A93B36500BDFFA3 /* Poppins-Black.ttf */; };
+		E8EAC66C2A93B36500BDFFA3 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65A2A93B36500BDFFA3 /* Poppins-BoldItalic.ttf */; };
+		E8EAC66D2A93B36500BDFFA3 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65B2A93B36500BDFFA3 /* Poppins-MediumItalic.ttf */; };
+		E8EAC66E2A93B36500BDFFA3 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65C2A93B36500BDFFA3 /* Poppins-Regular.ttf */; };
+		E8EAC66F2A93B36500BDFFA3 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65D2A93B36500BDFFA3 /* Poppins-ExtraBold.ttf */; };
+		E8EAC6702A93B36500BDFFA3 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65E2A93B36500BDFFA3 /* Poppins-LightItalic.ttf */; };
+		E8F134472A8FAEA30053CCD0 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */; };
+		E8F201E82A802575001685DA /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201E72A802575001685DA /* SplashScreenViewController.swift */; };
+		E8F201F12A824031001685DA /* Ext + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F02A824031001685DA /* Ext + UIImageView.swift */; };
+		E8F201F72A8258F9001685DA /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F62A8258F9001685DA /* OnboardingPage.swift */; };
+		E8F201FA2A82591C001685DA /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F92A82591C001685DA /* SplashScreenView.swift */; };
+		E8F202002A82596B001685DA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201FF2A82596B001685DA /* OnboardingView.swift */; };
+		E8F202042A83AA18001685DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F202032A83AA18001685DA /* LoginViewController.swift */; };
+		E8F2020A2A83C91C001685DA /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F202092A83C91C001685DA /* LoginScreenView.swift */; };
+		E8F2020C2A83F03E001685DA /* Ext + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F2020B2A83F03E001685DA /* Ext + UIView.swift */; };
+		E8F2020E2A83F6DC001685DA /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F2020D2A83F6DC001685DA /* UserCredentials.swift */; };
+		E8F2025D2A8BBC13001685DA /* Ext + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F2025C2A8BBC13001685DA /* Ext + UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E812AEAB2A94A5CC00E7CF9D /* SocialPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPlatform.swift; sourceTree = "<group>"; };
 		E8384FB32A7BF7A8005FE9F5 /* TomofilyaC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TomofilyaC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8384FB62A7BF7A8005FE9F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8384FB82A7BF7A8005FE9F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8384FBA2A7BF7A8005FE9F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E8384FBD2A7BF7A8005FE9F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8384FBA2A7BF7A8005FE9F5 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E8384FBF2A7BF7AB005FE9F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8384FC22A7BF7AB005FE9F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8384FC42A7BF7AB005FE9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8834C232A8F9286002853D8 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E8834C262A8F92CB002853D8 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		E8BC16D82A97DF7600EDA8CB /* GidToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GidToken.swift; sourceTree = "<group>"; };
+		E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		E8EAC63C2A90E90900BDFFA3 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		E8EAC63E2A91F9E900BDFFA3 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		E8EAC6402A92CC7C00BDFFA3 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		E8EAC6422A92CCAB00BDFFA3 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		E8EAC6482A93A5EA00BDFFA3 /* MailVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailVerifyViewController.swift; sourceTree = "<group>"; };
+		E8EAC64A2A93A60200BDFFA3 /* MailVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailVerifyView.swift; sourceTree = "<group>"; };
+		E8EAC64D2A93B36400BDFFA3 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		E8EAC64E2A93B36400BDFFA3 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		E8EAC64F2A93B36400BDFFA3 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC6502A93B36400BDFFA3 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		E8EAC6512A93B36400BDFFA3 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		E8EAC6522A93B36400BDFFA3 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC6532A93B36400BDFFA3 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		E8EAC6542A93B36400BDFFA3 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC6552A93B36400BDFFA3 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		E8EAC6562A93B36400BDFFA3 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC6572A93B36500BDFFA3 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		E8EAC6582A93B36500BDFFA3 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC6592A93B36500BDFFA3 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		E8EAC65A2A93B36500BDFFA3 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC65B2A93B36500BDFFA3 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		E8EAC65C2A93B36500BDFFA3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		E8EAC65D2A93B36500BDFFA3 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E8EAC65E2A93B36500BDFFA3 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
+		E8F201E72A802575001685DA /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		E8F201F02A824031001685DA /* Ext + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIImageView.swift"; sourceTree = "<group>"; };
+		E8F201F62A8258F9001685DA /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		E8F201F92A82591C001685DA /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		E8F201FF2A82596B001685DA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		E8F202032A83AA18001685DA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E8F202092A83C91C001685DA /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
+		E8F2020B2A83F03E001685DA /* Ext + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIView.swift"; sourceTree = "<group>"; };
+		E8F2020D2A83F6DC001685DA /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		E8F2025C2A8BBC13001685DA /* Ext + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +114,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E812AEAF2A94F9DD00E7CF9D /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E812AEA92A94936A00E7CF9D /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				E8EAC6482A93A5EA00BDFFA3 /* MailVerifyViewController.swift */,
+			);
+			path = Verify;
+			sourceTree = "<group>";
+		};
+		E812AEAA2A94937E00E7CF9D /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				E8EAC64A2A93A60200BDFFA3 /* MailVerifyView.swift */,
+			);
+			path = Verify;
+			sourceTree = "<group>";
+		};
 		E8384FAA2A7BF7A8005FE9F5 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +156,160 @@
 		E8384FB52A7BF7A8005FE9F5 /* TomofilyaC */ = {
 			isa = PBXGroup;
 			children = (
+				E8EAC64C2A93B33200BDFFA3 /* Fonts */,
+				E8F201EF2A824016001685DA /* Extensions */,
+				E8384FCC2A7BF800005FE9F5 /* Controller */,
+				E8384FCB2A7BF7F6005FE9F5 /* Model */,
+				E8384FCA2A7BF7F0005FE9F5 /* View */,
 				E8384FB62A7BF7A8005FE9F5 /* AppDelegate.swift */,
 				E8384FB82A7BF7A8005FE9F5 /* SceneDelegate.swift */,
-				E8384FBA2A7BF7A8005FE9F5 /* ViewController.swift */,
-				E8384FBC2A7BF7A8005FE9F5 /* Main.storyboard */,
 				E8384FBF2A7BF7AB005FE9F5 /* Assets.xcassets */,
 				E8384FC12A7BF7AB005FE9F5 /* LaunchScreen.storyboard */,
 				E8384FC42A7BF7AB005FE9F5 /* Info.plist */,
 			);
 			path = TomofilyaC;
+			sourceTree = "<group>";
+		};
+		E8384FCA2A7BF7F0005FE9F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8834C252A8F92BC002853D8 /* ForgotPassword */,
+				E8F202082A83C907001685DA /* Login */,
+				E8F202052A83AAD1001685DA /* Onboarding */,
+				E8F202012A83A9D0001685DA /* SplashScreen */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E8384FCB2A7BF7F6005FE9F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8F201F62A8258F9001685DA /* OnboardingPage.swift */,
+				E8F2020D2A83F6DC001685DA /* UserCredentials.swift */,
+				E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */,
+				E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */,
+				E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */,
+				E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */,
+				E812AEAB2A94A5CC00E7CF9D /* SocialPlatform.swift */,
+				E8BC16D82A97DF7600EDA8CB /* GidToken.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E8384FCC2A7BF800005FE9F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E8834C222A8F9264002853D8 /* ForgotPasswordViewController */,
+				E8F201EE2A8222F2001685DA /* SplashScreenViewController */,
+				E8F201ED2A8222E1001685DA /* OnboardingViewController */,
+				E8F202022A83A9F0001685DA /* LoginScreenViewController */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E8834C222A8F9264002853D8 /* ForgotPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8834C232A8F9286002853D8 /* ForgotPasswordViewController.swift */,
+				E8EAC63C2A90E90900BDFFA3 /* VerificationViewController.swift */,
+				E8EAC6402A92CC7C00BDFFA3 /* ResetPasswordViewController.swift */,
+			);
+			path = ForgotPasswordViewController;
+			sourceTree = "<group>";
+		};
+		E8834C252A8F92BC002853D8 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				E8834C262A8F92CB002853D8 /* ForgotPasswordView.swift */,
+				E8EAC63E2A91F9E900BDFFA3 /* VerificationView.swift */,
+				E8EAC6422A92CCAB00BDFFA3 /* ResetPasswordView.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		E8EAC64C2A93B33200BDFFA3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E8EAC6592A93B36500BDFFA3 /* Poppins-Black.ttf */,
+				E8EAC6562A93B36400BDFFA3 /* Poppins-BlackItalic.ttf */,
+				E8EAC6502A93B36400BDFFA3 /* Poppins-Bold.ttf */,
+				E8EAC65A2A93B36500BDFFA3 /* Poppins-BoldItalic.ttf */,
+				E8EAC65D2A93B36500BDFFA3 /* Poppins-ExtraBold.ttf */,
+				E8EAC64F2A93B36400BDFFA3 /* Poppins-ExtraBoldItalic.ttf */,
+				E8EAC6552A93B36400BDFFA3 /* Poppins-ExtraLight.ttf */,
+				E8EAC6542A93B36400BDFFA3 /* Poppins-ExtraLightItalic.ttf */,
+				E8EAC64E2A93B36400BDFFA3 /* Poppins-Italic.ttf */,
+				E8EAC6572A93B36500BDFFA3 /* Poppins-Light.ttf */,
+				E8EAC65E2A93B36500BDFFA3 /* Poppins-LightItalic.ttf */,
+				E8EAC64D2A93B36400BDFFA3 /* Poppins-Medium.ttf */,
+				E8EAC65B2A93B36500BDFFA3 /* Poppins-MediumItalic.ttf */,
+				E8EAC65C2A93B36500BDFFA3 /* Poppins-Regular.ttf */,
+				E8EAC6512A93B36400BDFFA3 /* Poppins-SemiBold.ttf */,
+				E8EAC6522A93B36400BDFFA3 /* Poppins-SemiBoldItalic.ttf */,
+				E8EAC6532A93B36400BDFFA3 /* Poppins-Thin.ttf */,
+				E8EAC6582A93B36500BDFFA3 /* Poppins-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E8F201ED2A8222E1001685DA /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8384FBA2A7BF7A8005FE9F5 /* OnboardingViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
+		E8F201EE2A8222F2001685DA /* SplashScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8F201E72A802575001685DA /* SplashScreenViewController.swift */,
+			);
+			path = SplashScreenViewController;
+			sourceTree = "<group>";
+		};
+		E8F201EF2A824016001685DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8F201F02A824031001685DA /* Ext + UIImageView.swift */,
+				E8F2020B2A83F03E001685DA /* Ext + UIView.swift */,
+				E8F2025C2A8BBC13001685DA /* Ext + UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E8F202012A83A9D0001685DA /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E8F201F92A82591C001685DA /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		E8F202022A83A9F0001685DA /* LoginScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E812AEA92A94936A00E7CF9D /* Verify */,
+				E8F202032A83AA18001685DA /* LoginViewController.swift */,
+			);
+			path = LoginScreenViewController;
+			sourceTree = "<group>";
+		};
+		E8F202052A83AAD1001685DA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E8F201FF2A82596B001685DA /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E8F202082A83C907001685DA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E812AEAA2A94937E00E7CF9D /* Verify */,
+				E8F202092A83C91C001685DA /* LoginScreenView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +328,9 @@
 			dependencies = (
 			);
 			name = TomofilyaC;
+			packageProductDependencies = (
+				E812AEAE2A94F9DD00E7CF9D /* GoogleSignIn */,
+			);
 			productName = TomofilyaC;
 			productReference = E8384FB32A7BF7A8005FE9F5 /* TomofilyaC.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +359,9 @@
 				Base,
 			);
 			mainGroup = E8384FAA2A7BF7A8005FE9F5;
+			packageReferences = (
+				E812AEAD2A94F9DC00E7CF9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = E8384FB42A7BF7A8005FE9F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +376,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EAC65F2A93B36500BDFFA3 /* Poppins-Medium.ttf in Resources */,
+				E8EAC6692A93B36500BDFFA3 /* Poppins-Light.ttf in Resources */,
+				E8EAC6642A93B36500BDFFA3 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				E8EAC66E2A93B36500BDFFA3 /* Poppins-Regular.ttf in Resources */,
+				E8EAC6662A93B36500BDFFA3 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				E8EAC6632A93B36500BDFFA3 /* Poppins-SemiBold.ttf in Resources */,
+				E8EAC66A2A93B36500BDFFA3 /* Poppins-ThinItalic.ttf in Resources */,
+				E8EAC6682A93B36500BDFFA3 /* Poppins-BlackItalic.ttf in Resources */,
+				E8EAC6652A93B36500BDFFA3 /* Poppins-Thin.ttf in Resources */,
+				E8EAC6622A93B36500BDFFA3 /* Poppins-Bold.ttf in Resources */,
+				E8EAC66B2A93B36500BDFFA3 /* Poppins-Black.ttf in Resources */,
+				E8EAC6702A93B36500BDFFA3 /* Poppins-LightItalic.ttf in Resources */,
+				E8EAC66F2A93B36500BDFFA3 /* Poppins-ExtraBold.ttf in Resources */,
 				E8384FC32A7BF7AB005FE9F5 /* LaunchScreen.storyboard in Resources */,
+				E8EAC66D2A93B36500BDFFA3 /* Poppins-MediumItalic.ttf in Resources */,
+				E8EAC6672A93B36500BDFFA3 /* Poppins-ExtraLight.ttf in Resources */,
+				E8EAC6602A93B36500BDFFA3 /* Poppins-Italic.ttf in Resources */,
 				E8384FC02A7BF7AB005FE9F5 /* Assets.xcassets in Resources */,
-				E8384FBE2A7BF7A8005FE9F5 /* Main.storyboard in Resources */,
+				E8EAC6612A93B36500BDFFA3 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				E8EAC66C2A93B36500BDFFA3 /* Poppins-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +406,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8384FBB2A7BF7A8005FE9F5 /* ViewController.swift in Sources */,
+				E8384FBB2A7BF7A8005FE9F5 /* OnboardingViewController.swift in Sources */,
+				E8834C272A8F92CB002853D8 /* ForgotPasswordView.swift in Sources */,
+				E8DD60C42A8E39C100B5C3C9 /* APIManager.swift in Sources */,
+				E8F201E82A802575001685DA /* SplashScreenViewController.swift in Sources */,
+				E8EAC6492A93A5EA00BDFFA3 /* MailVerifyViewController.swift in Sources */,
+				E8DD60C62A8E39EB00B5C3C9 /* AuthService.swift in Sources */,
+				E812AEAC2A94A5CC00E7CF9D /* SocialPlatform.swift in Sources */,
+				E8F2020A2A83C91C001685DA /* LoginScreenView.swift in Sources */,
+				E8F202042A83AA18001685DA /* LoginViewController.swift in Sources */,
+				E8EAC6412A92CC7C00BDFFA3 /* ResetPasswordViewController.swift in Sources */,
 				E8384FB72A7BF7A8005FE9F5 /* AppDelegate.swift in Sources */,
+				E8EAC64B2A93A60200BDFFA3 /* MailVerifyView.swift in Sources */,
+				E8F201F72A8258F9001685DA /* OnboardingPage.swift in Sources */,
+				E8F2025D2A8BBC13001685DA /* Ext + UIColor.swift in Sources */,
+				E8F134472A8FAEA30053CCD0 /* PasswordModel.swift in Sources */,
+				E8EAC63D2A90E90900BDFFA3 /* VerificationViewController.swift in Sources */,
+				E8F201FA2A82591C001685DA /* SplashScreenView.swift in Sources */,
+				E8EAC63F2A91F9E900BDFFA3 /* VerificationView.swift in Sources */,
+				E8F2020C2A83F03E001685DA /* Ext + UIView.swift in Sources */,
+				E8EAC6432A92CCAB00BDFFA3 /* ResetPasswordView.swift in Sources */,
+				E8F201F12A824031001685DA /* Ext + UIImageView.swift in Sources */,
+				E8F2020E2A83F6DC001685DA /* UserCredentials.swift in Sources */,
+				E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */,
+				E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */,
+				E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */,
 				E8384FB92A7BF7A8005FE9F5 /* SceneDelegate.swift in Sources */,
+				E8F202002A82596B001685DA /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E8384FBC2A7BF7A8005FE9F5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8384FBD2A7BF7A8005FE9F5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E8384FC12A7BF7AB005FE9F5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -285,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7T569GVN5Q;
@@ -292,7 +577,6 @@
 				INFOPLIST_FILE = TomofilyaC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,6 +586,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.agk.TomofilyaC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,6 +598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7T569GVN5Q;
@@ -320,7 +606,6 @@
 				INFOPLIST_FILE = TomofilyaC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,6 +615,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.agk.TomofilyaC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,6 +644,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E812AEAD2A94F9DC00E7CF9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E812AEAE2A94F9DD00E7CF9D /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E812AEAD2A94F9DC00E7CF9D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E8384FAB2A7BF7A8005FE9F5 /* Project object */;
 }

@@ -105,8 +105,8 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
                 if success {
                     // Başarılı kayıt işlemi sonrası işlemler
                     print("Başarılı kayıt! Token: \(messageOrToken ?? "N/A")")
-                    let mailVerifyVC = MailVerifyViewController(email: email ?? "")
-                    self.navigationController?.pushViewController(mailVerifyVC, animated: true)
+                    let loginViewVC = LoginViewController()
+                    self.navigationController?.pushViewController(loginViewVC, animated: true)
                     
                 } else {
                     // Hatalı kayıt işlemi sonrası işlemler

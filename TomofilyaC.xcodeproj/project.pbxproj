@@ -46,7 +46,6 @@
 		E8EAC6702A93B36500BDFFA3 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8EAC65E2A93B36500BDFFA3 /* Poppins-LightItalic.ttf */; };
 		E8F134472A8FAEA30053CCD0 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */; };
 		E8F201E82A802575001685DA /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201E72A802575001685DA /* SplashScreenViewController.swift */; };
-		E8F201F12A824031001685DA /* Ext + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F02A824031001685DA /* Ext + UIImageView.swift */; };
 		E8F201F72A8258F9001685DA /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F62A8258F9001685DA /* OnboardingPage.swift */; };
 		E8F201FA2A82591C001685DA /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201F92A82591C001685DA /* SplashScreenView.swift */; };
 		E8F202002A82596B001685DA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F201FF2A82596B001685DA /* OnboardingView.swift */; };
@@ -98,7 +97,6 @@
 		E8EAC65E2A93B36500BDFFA3 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		E8F201E72A802575001685DA /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
-		E8F201F02A824031001685DA /* Ext + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + UIImageView.swift"; sourceTree = "<group>"; };
 		E8F201F62A8258F9001685DA /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
 		E8F201F92A82591C001685DA /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		E8F201FF2A82596B001685DA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 		E8F201EF2A824016001685DA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E8F201F02A824031001685DA /* Ext + UIImageView.swift */,
 				E8F2020B2A83F03E001685DA /* Ext + UIView.swift */,
 				E8F2025C2A8BBC13001685DA /* Ext + UIColor.swift */,
 			);
@@ -426,7 +423,6 @@
 				E8EAC63F2A91F9E900BDFFA3 /* VerificationView.swift in Sources */,
 				E8F2020C2A83F03E001685DA /* Ext + UIView.swift in Sources */,
 				E8EAC6432A92CCAB00BDFFA3 /* ResetPasswordView.swift in Sources */,
-				E8F201F12A824031001685DA /* Ext + UIImageView.swift in Sources */,
 				E8F2020E2A83F6DC001685DA /* UserCredentials.swift in Sources */,
 				E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */,
 				E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */,

@@ -119,7 +119,7 @@ class AuthService {
             request.allHTTPHeaderFields = APIManager.shared.getDefaultHeaders()
 
             let bodyData: [String: Any] = [
-                "token": token,  // Burada "token" yerine "idToken" kullanıyoruz.
+                "token": token,  //
                 "platform": platform.rawValue
             ]
 

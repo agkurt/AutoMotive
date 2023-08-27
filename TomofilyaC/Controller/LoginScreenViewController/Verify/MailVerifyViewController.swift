@@ -50,7 +50,7 @@ class MailVerifyViewController : UIViewController {
     @objc func updateTimer() {
         if remainingSeconds > 0.00 {
             remainingSeconds -= 0.01
-            mailVerifyVC.countdownLabel.text = "\((remainingSeconds))" 
+            mailVerifyVC.countdownLabel.text = "\((remainingSeconds))"
            
         } else {
             timer?.invalidate()
@@ -78,8 +78,8 @@ class MailVerifyViewController : UIViewController {
             DispatchQueue.main.async {
                 if success {
                     // Doğrulama başarılıysa
-                    let resetPasswordVC = ResetPasswordViewController(email: self.email, code: fullCode)
-                    self.navigationController?.pushViewController(resetPasswordVC, animated: true)
+                    let loginVC = LoginViewController()
+                    self.navigationController?.pushViewController(loginVC, animated: true)
                 } else {
                     
                     // Doğrulama başarısızsa
@@ -91,3 +91,4 @@ class MailVerifyViewController : UIViewController {
         }
     }
 }
+

@@ -1,0 +1,8 @@
+<svg id="Icon_Shopping_bag" data-name="Icon/Shopping bag" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Boundary" width="24" height="24" fill="none"/>
+  <g id="shopping-cart_1_" data-name="shopping-cart (1)" transform="translate(1 1.455)">
+    <circle id="Ellipse_177" data-name="Ellipse 177" cx="0.909" cy="0.909" r="0.909" transform="translate(7.364 18.273)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <circle id="Ellipse_178" data-name="Ellipse 178" cx="0.909" cy="0.909" r="0.909" transform="translate(17.364 18.273)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_969" data-name="Path 969" d="M1,1H4.636L7.073,13.173a1.818,1.818,0,0,0,1.818,1.464h8.836a1.818,1.818,0,0,0,1.818-1.464L21,5.545H5.545" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>

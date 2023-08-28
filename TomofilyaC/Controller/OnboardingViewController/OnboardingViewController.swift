@@ -44,7 +44,8 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         if sender == onboardingView.registerLoginButton {
             showOnboardingScreen()
         } else if sender == onboardingView.startUsingButton {
-          
+           let tabBarVc = TabBarController()
+           self.navigationController?.pushViewController(tabBarVc, animated: true)
         }
     }
     

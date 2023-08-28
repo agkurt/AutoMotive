@@ -17,6 +17,13 @@
 		E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8834C232A8F9286002853D8 /* ForgotPasswordViewController.swift */; };
 		E8834C272A8F92CB002853D8 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8834C262A8F92CB002853D8 /* ForgotPasswordView.swift */; };
 		E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BC16D82A97DF7600EDA8CB /* GidToken.swift */; };
+		E8DB74492A9CB8A10084AB29 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74482A9CB8A10084AB29 /* HomeController.swift */; };
+		E8DB744F2A9CD1AE0084AB29 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */; };
+		E8DB74512A9CD1BE0084AB29 /* GarageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74502A9CD1BE0084AB29 /* GarageController.swift */; };
+		E8DB74532A9CD1EF0084AB29 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74522A9CD1EF0084AB29 /* ShopController.swift */; };
+		E8DB74552A9CD1FA0084AB29 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74542A9CD1FA0084AB29 /* ProfileController.swift */; };
+		E8DB74572A9CD27B0084AB29 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74562A9CD27B0084AB29 /* TabBarController.swift */; };
+		E8DB745A2A9CE4F50084AB29 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74592A9CE4F50084AB29 /* TabBarView.swift */; };
 		E8DD60C42A8E39C100B5C3C9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */; };
 		E8DD60C62A8E39EB00B5C3C9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */; };
 		E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */; };
@@ -68,6 +75,13 @@
 		E8834C232A8F9286002853D8 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		E8834C262A8F92CB002853D8 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		E8BC16D82A97DF7600EDA8CB /* GidToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GidToken.swift; sourceTree = "<group>"; };
+		E8DB74482A9CB8A10084AB29 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		E8DB74502A9CD1BE0084AB29 /* GarageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageController.swift; sourceTree = "<group>"; };
+		E8DB74522A9CD1EF0084AB29 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
+		E8DB74542A9CD1FA0084AB29 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		E8DB74562A9CD27B0084AB29 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E8DB74592A9CE4F50084AB29 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
@@ -171,6 +185,7 @@
 		E8384FCA2A7BF7F0005FE9F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E8DB74582A9CE4E80084AB29 /* TabBar */,
 				E8834C252A8F92BC002853D8 /* ForgotPassword */,
 				E8F202082A83C907001685DA /* Login */,
 				E8F202052A83AAD1001685DA /* Onboarding */,
@@ -197,6 +212,7 @@
 		E8384FCC2A7BF800005FE9F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E8DB74462A9CB6240084AB29 /* TabbarControllers */,
 				E8834C222A8F9264002853D8 /* ForgotPasswordViewController */,
 				E8F201EE2A8222F2001685DA /* SplashScreenViewController */,
 				E8F201ED2A8222E1001685DA /* OnboardingViewController */,
@@ -223,6 +239,27 @@
 				E8EAC6422A92CCAB00BDFFA3 /* ResetPasswordView.swift */,
 			);
 			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		E8DB74462A9CB6240084AB29 /* TabbarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8DB74562A9CD27B0084AB29 /* TabBarController.swift */,
+				E8DB74482A9CB8A10084AB29 /* HomeController.swift */,
+				E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */,
+				E8DB74502A9CD1BE0084AB29 /* GarageController.swift */,
+				E8DB74522A9CD1EF0084AB29 /* ShopController.swift */,
+				E8DB74542A9CD1FA0084AB29 /* ProfileController.swift */,
+			);
+			path = TabbarControllers;
+			sourceTree = "<group>";
+		};
+		E8DB74582A9CE4E80084AB29 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E8DB74592A9CE4F50084AB29 /* TabBarView.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E8EAC64C2A93B33200BDFFA3 /* Fonts */ = {
@@ -404,11 +441,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8384FBB2A7BF7A8005FE9F5 /* OnboardingViewController.swift in Sources */,
+				E8DB745A2A9CE4F50084AB29 /* TabBarView.swift in Sources */,
+				E8DB74572A9CD27B0084AB29 /* TabBarController.swift in Sources */,
 				E8834C272A8F92CB002853D8 /* ForgotPasswordView.swift in Sources */,
 				E8DD60C42A8E39C100B5C3C9 /* APIManager.swift in Sources */,
 				E8F201E82A802575001685DA /* SplashScreenViewController.swift in Sources */,
 				E8EAC6492A93A5EA00BDFFA3 /* MailVerifyViewController.swift in Sources */,
 				E8DD60C62A8E39EB00B5C3C9 /* AuthService.swift in Sources */,
+				E8DB74552A9CD1FA0084AB29 /* ProfileController.swift in Sources */,
 				E812AEAC2A94A5CC00E7CF9D /* SocialPlatform.swift in Sources */,
 				E8F2020A2A83C91C001685DA /* LoginScreenView.swift in Sources */,
 				E8F202042A83AA18001685DA /* LoginViewController.swift in Sources */,
@@ -419,13 +459,17 @@
 				E8F2025D2A8BBC13001685DA /* Ext + UIColor.swift in Sources */,
 				E8F134472A8FAEA30053CCD0 /* PasswordModel.swift in Sources */,
 				E8EAC63D2A90E90900BDFFA3 /* VerificationViewController.swift in Sources */,
+				E8DB74512A9CD1BE0084AB29 /* GarageController.swift in Sources */,
 				E8F201FA2A82591C001685DA /* SplashScreenView.swift in Sources */,
 				E8EAC63F2A91F9E900BDFFA3 /* VerificationView.swift in Sources */,
+				E8DB74532A9CD1EF0084AB29 /* ShopController.swift in Sources */,
 				E8F2020C2A83F03E001685DA /* Ext + UIView.swift in Sources */,
 				E8EAC6432A92CCAB00BDFFA3 /* ResetPasswordView.swift in Sources */,
 				E8F2020E2A83F6DC001685DA /* UserCredentials.swift in Sources */,
 				E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */,
 				E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */,
+				E8DB744F2A9CD1AE0084AB29 /* MessageController.swift in Sources */,
+				E8DB74492A9CB8A10084AB29 /* HomeController.swift in Sources */,
 				E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */,
 				E8384FB92A7BF7A8005FE9F5 /* SceneDelegate.swift in Sources */,
 				E8F202002A82596B001685DA /* OnboardingView.swift in Sources */,

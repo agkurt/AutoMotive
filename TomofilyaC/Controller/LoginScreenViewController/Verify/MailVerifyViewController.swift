@@ -78,8 +78,8 @@ class MailVerifyViewController : UIViewController {
             DispatchQueue.main.async {
                 if success {
                     // Doğrulama başarılıysa
-                    let loginVC = LoginViewController()
-                    self.navigationController?.pushViewController(loginVC, animated: true)
+                    let logInVC = LoginViewController()
+                    self.navigationController?.pushViewController(logInVC, animated: true)
                 } else {
                     
                     // Doğrulama başarısızsa

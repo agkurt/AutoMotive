@@ -1,0 +1,7 @@
+<svg id="ok-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_1349" data-name="Rectangle 1349" width="24" height="24" fill="none"/>
+  <g id="Group_1194" data-name="Group 1194">
+    <circle id="Ellipse_256" data-name="Ellipse 256" cx="10" cy="10" r="10" transform="translate(2 2)" fill="#fff" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+    <path id="Path_1344" data-name="Path 1344" d="M7,13l3,3,7-7" fill="none" stroke="#1d1d1d" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

@@ -16,6 +16,7 @@ class LoginScreenView: UIView {
     private var signUpProcessStack: UIStackView!
     private var logInProcessStack : UIStackView!
     private var buttonStackView : UIStackView!
+    private var agreementStackView : UIStackView!
     private var optionsButtonStackView : UIStackView!
     let apple = UIImage(named: "apple")
     let google = UIImage(named: "google")
@@ -38,8 +39,14 @@ class LoginScreenView: UIView {
     var signUpConstraints: [NSLayoutConstraint] = []
     var logInConstraints: [NSLayoutConstraint] = []
     let showHideButton = UIButton(type: .custom)
+    let agreementLabel = UILabel()
+    let agreementButton = UIButton()
+    
     
     weak var delegate: LoginScreenViewDelegate?
+    
+    
+    
     
     lazy var loginSegmentedControl: UISegmentedControl = {
         let items = ["Kayıt Ol", "Giriş Yap"]
@@ -76,11 +83,17 @@ class LoginScreenView: UIView {
     }
     func configureContractText(_ textView: UITextView, with links: [LinkModel]) {
         let baseText = "Uygulamaya üye olarak; Üyelik Sözleşmesi’ni ve Kişisel Veriler ile İlgili Aydınlatma Metni’ni okuduğunuzu ve kabul ettiğinizi onaylamaktasınız."
+        
+        let links = [
+            LinkModel(text: "Üyelik Sözleşmesi", url: URL(string: "https://tomofilyastorage.blob.core.windows.net/contracts/Tomofilya_Uyelik_Sozlesmesi.pdf")!),
+            LinkModel(text: "Kişisel Veriler ile İlgili Aydınlatma Metni", url: URL(string: "https://tomofilyastorage.blob.core.windows.net/contracts/Tomofilya_KVKK_Aydinlatma_Metni.pdf")!)
+        ]
+        
 
         let attributedString = NSMutableAttributedString(string: baseText)
         for link in links {
             let linkRange = (baseText as NSString).range(of: link.text)
-            attributedString.addAttribute(.link, value: link.url, range: linkRange)
+            attributedString.addAttribute(.link, value: link.url, range: linkRange)  // Doğrudan link.url'yi kullanabilirsiniz.
             attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: linkRange)
             attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: linkRange)
         }
@@ -101,6 +114,35 @@ class LoginScreenView: UIView {
         addSubview(textView)
     }
 
+
+    
+    func configureAgreement() {
+        agreementLabel.text = "Tomofilya ürün ve hizmetleri ile ilgili ticari elektronik ileti (e-posta ve sms) almak istiyorum."
+        agreementLabel.numberOfLines = 0 // Birden fazla satır için
+        agreementLabel.font = UIFont(name: "Poppins-Light", size: 10)
+        agreementLabel.textColor = UIColor.white
+        agreementLabel.backgroundColor = UIColor.clear
+        agreementLabel.isUserInteractionEnabled = true
+        agreementButton.layer.cornerRadius = 12
+        agreementButton.layer.borderColor = UIColor.black.cgColor
+        agreementButton.backgroundColor = .white
+        
+        
+        
+        NSLayoutConstraint.activate([
+            agreementButton.widthAnchor.constraint(equalToConstant: 24),
+            agreementButton.heightAnchor.constraint(equalToConstant: 24)
+        ])
+
+    }
+    
+    func configureStackAgreement() {
+        agreementStackView = UIStackView(arrangedSubviews: [agreementButton, agreementLabel])
+        agreementStackView.axis = .horizontal
+        agreementStackView.spacing = 5
+        agreementStackView.alignment = .center
+        agreementStackView.translatesAutoresizingMaskIntoConstraints = false
+    }
     
     func configureLabel(_ label:UILabel ,text : String  , textAligment : NSTextAlignment , name :String , size : CGFloat) {
         label.text = text
@@ -114,7 +156,6 @@ class LoginScreenView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         textField.placeholder = "\t\(placeholder)"
-        
         textField.layer.cornerRadius = cornerRadius
         textField.layer.borderWidth = 0.6
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -160,6 +201,9 @@ class LoginScreenView: UIView {
         configureContractText(contractText, with: links)
         differentLoginOptions(appleLoginButton, title: "Apple ile Devam Et", backgroundColor: UIColor(hex: "#0F0F0F"), textColor: UIColor.white, setImage: apple!)
         differentLoginOptions(gmailLoginButton, title: "Google ile Devam Et", backgroundColor: UIColor(hex: "#0F0F0F"), textColor: UIColor.white, setImage: google!)
+        configureAgreement()
+       
+        
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "Tomofilya")
@@ -173,6 +217,8 @@ class LoginScreenView: UIView {
         addSubview(passwordTitleButton)
         
         configureStackField()
+        configureStackAgreement()
+        addSubview(agreementStackView)
         
         showHideButton.setImage(UIImage(named: "eyeOff"), for: .normal)
         showHideButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
@@ -189,6 +235,11 @@ class LoginScreenView: UIView {
         loginSegmentedControl.anchor(top: topAnchor,bottom: nil,width: 240,height: 44,paddingTop: 150)
         
         signUpConstraints = [
+            
+            agreementStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            agreementStackView.widthAnchor.constraint(equalToConstant: 356),
+            agreementStackView.heightAnchor.constraint(equalToConstant: 32),
+            agreementStackView.topAnchor.constraint(equalTo:contractText.bottomAnchor, constant: 16),
             
             signUpButton.widthAnchor.constraint(equalToConstant: 304),
             signUpButton.heightAnchor.constraint(equalToConstant: 40),
@@ -256,6 +307,7 @@ class LoginScreenView: UIView {
             signUpButton.isHidden = false
             contractText.isHidden = false
             showHideButton.isHidden = false
+            agreementStackView.isHidden = false
            
             NSLayoutConstraint.deactivate(logInConstraints)
             NSLayoutConstraint.activate(signUpConstraints)
@@ -266,6 +318,8 @@ class LoginScreenView: UIView {
             passwordTitleButton.isHidden = false
             signUpButton.isHidden = true
             showHideButton.isHidden = false
+            agreementStackView.isHidden = true
+            
             NSLayoutConstraint.deactivate(signUpConstraints)
             NSLayoutConstraint.activate(logInConstraints)
         }

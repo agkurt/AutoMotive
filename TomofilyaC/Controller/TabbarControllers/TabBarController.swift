@@ -8,8 +8,7 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    
-    let tabBarView = TabBarView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +52,9 @@ class TabBarController: UITabBarController {
         
         
         return nav
+    }
+    
+    func configureAnchor() {
+        
     }
 }

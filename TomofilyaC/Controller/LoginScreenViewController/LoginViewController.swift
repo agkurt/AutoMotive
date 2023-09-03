@@ -13,6 +13,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     
     var userCredentials : UserCredentials!
     var loginScreenView = LoginScreenView()
+    var isAgreed = false
     
     let contractText: UITextView = {
         let textView = UITextView()
@@ -45,6 +46,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         loginScreenView.passwordTitleButton.addTarget(self, action: #selector(handlePasswordTitleButon), for: .touchUpInside)
         loginScreenView.loginSegmentedControl.selectedSegmentIndex = 0
         loginScreenView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        loginScreenView.agreementButton.addTarget(self, action: #selector(handleAgreementTab), for: .touchUpInside)
         
         
     }
@@ -74,6 +76,20 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
                 }
             }
         }
+    }
+    
+    @objc func handleAgreementTab() {
+        isAgreed.toggle() // true
+            if isAgreed {
+                let checkmark = UIImage(named: "done")
+                loginScreenView.agreementButton.setImage(checkmark, for: .normal)
+                loginScreenView.agreementButton.tintColor = .white
+                loginScreenView.agreementButton.backgroundColor = .white
+            } else {
+                let cleanMark = UIImage(named:"clean")
+                loginScreenView.agreementButton.setImage(cleanMark, for: .normal)
+                loginScreenView.agreementButton.backgroundColor = .white
+            }
     }
     
     @objc func signUpButtonTapped() {

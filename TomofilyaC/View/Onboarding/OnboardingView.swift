@@ -38,8 +38,8 @@ class OnboardingView: UIView {
         NSLayoutConstraint.activate([
             registerLoginButton.widthAnchor.constraint(equalToConstant: 304),
             registerLoginButton.heightAnchor.constraint(equalToConstant: 40),
-            registerLoginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
-            registerLoginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60)
+            registerLoginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60),
+            registerLoginButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         
@@ -90,7 +90,7 @@ class OnboardingView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "Tomofilya")
         imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true  // To ensure the image is clipped within the bounds of the imageView
+        imageView.clipsToBounds = true
         
         addSubview(imageView)
         
@@ -104,7 +104,7 @@ class OnboardingView: UIView {
     
     func loadContent(pages: [OnboardingPage]) {
         pageControl.numberOfPages = pages.count
-        scrollView.isDirectionalLockEnabled = true // Bu satırı bir kere set etmeniz yeterli. For döngüsünün içinde olmasına gerek yok.
+        scrollView.isDirectionalLockEnabled = true
         
         var previousImageView: UIImageView?
         
@@ -117,7 +117,6 @@ class OnboardingView: UIView {
             }
             scrollView.addSubview(imageView)
             
-            // Yatay kısıtlamalar
             var leadingConstraint: NSLayoutConstraint
             if let previousView = previousImageView {
                 leadingConstraint = imageView.leadingAnchor.constraint(equalTo: previousView.trailingAnchor)
@@ -125,11 +124,10 @@ class OnboardingView: UIView {
                 leadingConstraint = imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
             }
             
-            // Dikey kısıtlamalaar
+        
             let topConstraint = imageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
             let bottomConstraint = imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
             
-            // Genişlik ve yükseklik
             let widthConstraint = imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
             let heightConstraint = imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
             

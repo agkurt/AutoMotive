@@ -28,7 +28,8 @@ class VerificationViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(verificationView)
         startTimer()
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         verificationView.sendButton.addTarget(self, action: #selector(self.sendButtonTapped), for: .touchUpInside)
         
         verificationView.translatesAutoresizingMaskIntoConstraints = false

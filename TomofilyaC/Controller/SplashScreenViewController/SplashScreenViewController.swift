@@ -13,6 +13,7 @@ class SplashScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
         firstSplashScreenView = SplashScreenView(frame: view.frame)
         view = firstSplashScreenView
         firstSplashScreenView.backgroundColor = UIColor.black

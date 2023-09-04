@@ -27,6 +27,8 @@ class MailVerifyViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startTimer()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         
         mailVerifyVC.sendButton.addTarget(self, action: #selector(self.sendButtonTapped), for: .touchUpInside)
         

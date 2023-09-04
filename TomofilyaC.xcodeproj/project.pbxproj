@@ -26,6 +26,8 @@
 		E8DD60C42A8E39C100B5C3C9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */; };
 		E8DD60C62A8E39EB00B5C3C9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */; };
 		E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */; };
+		E8E49AD82AA62DBF0079F820 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E49AD72AA62DBF0079F820 /* HomeView.swift */; };
+		E8E49ADA2AA62DE20079F820 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E49AD92AA62DE20079F820 /* HomeModel.swift */; };
 		E8EAC63D2A90E90900BDFFA3 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC63C2A90E90900BDFFA3 /* VerificationViewController.swift */; };
 		E8EAC63F2A91F9E900BDFFA3 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC63E2A91F9E900BDFFA3 /* VerificationView.swift */; };
 		E8EAC6412A92CC7C00BDFFA3 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EAC6402A92CC7C00BDFFA3 /* ResetPasswordViewController.swift */; };
@@ -83,6 +85,8 @@
 		E8DD60C32A8E39C100B5C3C9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E8DD60C52A8E39EB00B5C3C9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E8DD60C92A8F01A200B5C3C9 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		E8E49AD72AA62DBF0079F820 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E8E49AD92AA62DE20079F820 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		E8EAC63C2A90E90900BDFFA3 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		E8EAC63E2A91F9E900BDFFA3 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		E8EAC6402A92CC7C00BDFFA3 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				E8F134462A8FAEA30053CCD0 /* PasswordModel.swift */,
 				E812AEAB2A94A5CC00E7CF9D /* SocialPlatform.swift */,
 				E8BC16D82A97DF7600EDA8CB /* GidToken.swift */,
+				E8E49AD92AA62DE20079F820 /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,8 +247,8 @@
 		E8DB74462A9CB6240084AB29 /* TabbarControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E8E49AD02AA623A40079F820 /* Home */,
 				E8DB74562A9CD27B0084AB29 /* TabBarController.swift */,
-				E8DB74482A9CB8A10084AB29 /* HomeController.swift */,
 				E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */,
 				E8DB74502A9CD1BE0084AB29 /* GarageController.swift */,
 				E8DB74522A9CD1EF0084AB29 /* ShopController.swift */,
@@ -255,8 +260,17 @@
 		E8DB74582A9CE4E80084AB29 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				E8E49AD72AA62DBF0079F820 /* HomeView.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E8E49AD02AA623A40079F820 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E8DB74482A9CB8A10084AB29 /* HomeController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		E8EAC64C2A93B33200BDFFA3 /* Fonts */ = {
@@ -463,7 +477,9 @@
 				E8EAC6432A92CCAB00BDFFA3 /* ResetPasswordView.swift in Sources */,
 				E8F2020E2A83F6DC001685DA /* UserCredentials.swift in Sources */,
 				E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */,
+				E8E49ADA2AA62DE20079F820 /* HomeModel.swift in Sources */,
 				E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */,
+				E8E49AD82AA62DBF0079F820 /* HomeView.swift in Sources */,
 				E8DB744F2A9CD1AE0084AB29 /* MessageController.swift in Sources */,
 				E8DB74492A9CB8A10084AB29 /* HomeController.swift in Sources */,
 				E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */,

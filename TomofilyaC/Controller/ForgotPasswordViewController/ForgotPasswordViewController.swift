@@ -13,6 +13,7 @@ class ForgotPasswordViewController: UIViewController {
     let forgotPasswordView = ForgotPasswordView()
 
     override func viewDidLoad() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         view.addSubview(forgotPasswordView)

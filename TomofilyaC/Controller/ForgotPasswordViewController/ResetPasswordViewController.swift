@@ -27,7 +27,8 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(resetPasswordView)
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         resetPasswordView.changePasswordButton.addTarget(self, action: #selector(changePasswordTapped), for: .touchUpInside)
         resetPasswordView.cancelButton.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
         

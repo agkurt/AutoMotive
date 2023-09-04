@@ -29,7 +29,8 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationItem.hidesBackButton = true
+
         
         loginScreenView.configureContractText(contractText, with: links)
         view.addSubview(contractText)

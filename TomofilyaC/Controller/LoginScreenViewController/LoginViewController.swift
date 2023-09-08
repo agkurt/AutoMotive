@@ -135,7 +135,6 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     }
     
     @objc func handleLoginButton() {
-        
         print("Giriş Yap butonuna tıklandı.")
         
     }
@@ -169,7 +168,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
                 }
                 
                 if let idTokenValue = user.idToken {
-                    let idTokenString = idTokenValue.tokenString // Bu satırı ekledim.
+                    let idTokenString = idTokenValue.tokenString
                     AuthService.shared.socialLogin(token: idTokenString, platform: .Google) { (success, messageOrToken, isSocialMediaAccount) in
                         DispatchQueue.main.async {
                             if success {

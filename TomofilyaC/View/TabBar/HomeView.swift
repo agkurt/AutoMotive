@@ -13,7 +13,7 @@ protocol HomeViewDelegate : AnyObject {
 
 class HomeView: UIView {
     
-    private let tomofilyaImage = UIImageView()
+    let tomofilyaImage = UIImageView()
     let favoriteButton = UIButton()
     let searchBar = createSearchBar()
     

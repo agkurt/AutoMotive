@@ -20,6 +20,7 @@ class APIManager {
         case socialLogin = "/authentication/social"
         case sendVerificationCode = "/user/sendverificationcode/{email}"
         case passwordReset = "/user/passwordreset"
+        case homeAll = "/Home/All"
     }
 
     func getURL(for endpoint: Endpoint, email: String? = nil) -> URL? {
@@ -33,7 +34,7 @@ class APIManager {
             return URL(string: baseURL + endpoint.rawValue)
         }
     }
-
+    
     
     func getDefaultHeaders(withToken token: String? = nil) -> [String: String] {
         var headers: [String: String] = [

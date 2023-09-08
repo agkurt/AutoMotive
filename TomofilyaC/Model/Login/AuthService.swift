@@ -16,7 +16,6 @@ class AuthService {
             request.httpMethod = "POST"
             request.allHTTPHeaderFields = APIManager.shared.getDefaultHeaders()
             request.httpBody = try? JSONSerialization.data(withJSONObject: userDetails)
-            
             performRequest(request: request, completion: completion)
         } else {
             completion(false, "Failed to create URL.")
@@ -39,7 +38,7 @@ class AuthService {
             completion(false, "Failed to create URL.")
         }
     }
-
+    
     
     func login(credentials: [String: Any], completion: @escaping (Bool, String?) -> Void) {
         if let url = APIManager.shared.getURL(for: .login) {
@@ -65,7 +64,7 @@ class AuthService {
             completion(false, "Failed to create URL.")
         }
     }
-
+    
     
     private func performRequest(request: URLRequest, completion: @escaping (Bool, String?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -73,13 +72,11 @@ class AuthService {
                 completion(false, err.localizedDescription)
                 return
             }
-            
-          
             if let httpResponse = response as? HTTPURLResponse {
                 print("HTTP Status Code: \(httpResponse.statusCode)")
             }
             
-          
+            
             if let rawResponse = String(data: data!, encoding: .utf8) {
                 print("Raw Response: \(rawResponse)")
             }
@@ -117,12 +114,12 @@ class AuthService {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.allHTTPHeaderFields = APIManager.shared.getDefaultHeaders()
-
+            
             let bodyData: [String: Any] = [
                 "token": token,  //
                 "platform": platform.rawValue
             ]
-
+            
             request.httpBody = try? JSONSerialization.data(withJSONObject: bodyData)
             
             performRequest(request: request) { (success, messageOrToken) in
@@ -137,9 +134,9 @@ class AuthService {
             completion(false, "Failed to create URL.", false)
         }
     }
-
-
-
+    
+    
+    
     
     func resetPassword(email: String, code: String, newPassword: String, completion: @escaping (Bool, String?) -> Void) {
         if let url = APIManager.shared.getURL(for: .passwordReset) {
@@ -159,8 +156,50 @@ class AuthService {
             completion(false, "Failed to create URL.")
         }
     }
+    func fetchHomeData(completion: @escaping (Bool, HomeResponse?, String?) -> Void) {
+        if let url = APIManager.shared.getURL(for: .homeAll) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = APIManager.shared.getDefaultHeaders()
 
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP Status Code: \(httpResponse.statusCode)")
+                }
 
+                guard let data = data else {
+                    completion(false, nil, "No data was returned.")
+                    return
+                }
 
+                do {
+                    let homeResponse = try JSONDecoder().decode(HomeResponse.self, from: data)
+                    completion(true, homeResponse, nil)
+                } catch {
+                    print("Failed to decode: \(error)")
+                    completion(false, nil, error.localizedDescription)
+                }
+            }.resume()
+        } else {
+            completion(false, nil, "Failed to create URL.")
+        }
+    }
+
+    
+    private func performRequest(request: URLRequest, completion: @escaping (Bool, Data?) -> Void) {
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let httpResponse = response as? HTTPURLResponse {
+                print("HTTP Status Code: \(httpResponse.statusCode)")
+                if httpResponse.statusCode == 200, let data = data {
+                    completion(true, data)
+                } else {
+                    completion(false, nil)
+                }
+            } else {
+                completion(false, nil)
+            }
+        }.resume()
+    }
+    
 }
 

@@ -5,7 +5,7 @@
 //  Created by Ahmet Göktürk Kurt on 24.08.2023.
 //
 
-import UIKit
+import Foundation
 
 struct GIDToken {
     var value: String

@@ -5,8 +5,6 @@
 //  Created by Ahmet Göktürk Kurt on 7.09.2023.
 //
 
-
-
 import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
@@ -14,6 +12,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     var sections: [UIView] = []
     private var categoryLabel = UILabel()
     let homeView = HomeView()
+    let imageView = UIImageView()
+    let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +35,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             sectionView.layer.cornerRadius = 20
             contentView.addSubview(sectionView)
             sections.append(sectionView)
+            
         }
         
         for i in 0..<3 {
@@ -56,7 +57,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(with categories: [Categories]) {
+    func configureCell(with categories: [CategoryItem]) {
         for (index, category) in categories.enumerated() {
             let label = UILabel()
             label.text = category.title
@@ -66,18 +67,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             let imageView = UIImageView()
             imageView.image = UIImage(named: category.image)
             imageView.contentMode = .scaleAspectFit
-            
             let section = sections[index]
             
             section.subviews.forEach { $0.removeFromSuperview() }
             
-            let innerStackView = UIStackView(arrangedSubviews: [imageView, label ,categoryLabel])
+            let innerStackView = UIStackView(arrangedSubviews: [imageView, label])
             innerStackView.axis = .vertical
             innerStackView.spacing = 5
             innerStackView.translatesAutoresizingMaskIntoConstraints = false
-            
             section.addSubview(innerStackView)
-            
           
             NSLayoutConstraint.activate([
                 innerStackView.centerXAnchor.constraint(equalTo: section.centerXAnchor),
@@ -92,9 +90,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.white
         
-        NSLayoutConstraint.activate( [
+        NSLayoutConstraint.activate( [ 
             label.widthAnchor.constraint(equalToConstant: 70),
             label.heightAnchor.constraint(equalToConstant: 17),
+//            label.topAnchor.constraint(equalTo: homeView.searchBar.bottomAnchor, constant: 10)
 
         ])
     }

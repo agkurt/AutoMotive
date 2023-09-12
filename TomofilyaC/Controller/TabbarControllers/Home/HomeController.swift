@@ -12,8 +12,9 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
     
     private var homeModel = HomeModel()
     private lazy var homeView = HomeView()
+    private var garageView = fastGarageView()
     private var collectionView: UICollectionView?
-    
+    private var imageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +23,23 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
         guard let collectionView = collectionView else {
             return
         }
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "categoryCell")
+        collectionView.register(fastGarageCollectionViewCell.self, forCellWithReuseIdentifier: "fastGarageCell")
+        collectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: "productsCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.frame = view.bounds
         collectionView.backgroundColor = UIColor.black
+        
         transparentBackGround()
-        setupView()
+        view = homeView
         setupSearchBar()
         homeView.favoriteButton.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
-    }
-    
-    private func setupView() {
-        view = homeView
     }
     
     private func setupSearchBar() {
@@ -58,19 +57,30 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
         print("Butona Tıklandı.")
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let cell = homeModel.categories.count
-        return cell
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int ) -> Int {
+            let cell = homeModel.categories.count
+            return cell
+        
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
             let category = homeModel.categories[indexPath.row]
-            cell.configureCell(with: homeModel.categories)
+            cell.imageView.image = UIImage(named: category.image)
+            cell.label.text = category.title
             cell.backgroundColor = .black
+            cell.configureCell(with: [category])
             return cell
-        }else {
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastGarageCell", for: indexPath) as! fastGarageCollectionViewCell
+            cell.backgroundColor = .blue
+            return cell
+        case 2 :
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productsCell", for: indexPath)
+            cell.backgroundColor = .blue
+            return cell
+        default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             cell.backgroundColor = .blue
             return cell
@@ -79,10 +89,13 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: 390 , height: 173)
-        }else {
-            return CGSize(width: view.bounds.width, height: 173)
+        switch indexPath.row {
+        case 0 :
+            return CGSize(width: 390, height: 173)
+        case 1 :
+            return CGSize(width: 390, height: 104)
+        default :
+            return CGSize(width: view.bounds.width, height: view.bounds.height)
         }
     }
     
@@ -106,10 +119,13 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
     }
     
     func fetchHomeData() {
-        AuthService.shared.fetchHomeData { (success, homeResponse, errorMessage) in
+        AuthService.shared.fetchHomeData { (success, homeDataResponse, errorMessage ) in
             DispatchQueue.main.async {
-                if success, let homeResponse = homeResponse {
-                    // Veriyi kullan
+                if success,let homeData = homeDataResponse {
+                    self.collectionView?.reloadData() // update to data
+                    if let fastGarages = homeData.garages, !fastGarages.isEmpty {
+                        let firstGarages = fastGarages[0]
+                    }
                 } else {
                     // Hata mesajını göster
                     print(errorMessage ?? "Unknown error")

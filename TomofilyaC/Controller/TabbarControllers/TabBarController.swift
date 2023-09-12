@@ -17,9 +17,10 @@ class TabBarController: UITabBarController {
         self.setupTabs()
         self.tabBar.barTintColor = .red
         self.tabBar.tintColor = .orange
+        self.tabBar.backgroundColor = .black
         self.tabBar.unselectedItemTintColor = .white
         self.tabBar.layer.borderColor = UIColor.white.cgColor
-        self.tabBar.layer.borderWidth = 1.0
+        self.tabBar.layer.borderWidth = 0.5
         self.tabBar.layer.cornerRadius = 25
     }
     private func setupTabs() {

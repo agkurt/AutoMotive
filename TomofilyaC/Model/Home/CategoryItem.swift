@@ -7,6 +7,6 @@
 
 import UIKit
 
-struct Categories {
+struct CategoryItem {
     let title , image : String
 }

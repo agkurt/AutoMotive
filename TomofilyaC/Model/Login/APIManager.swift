@@ -20,7 +20,7 @@ class APIManager {
         case socialLogin = "/authentication/social"
         case sendVerificationCode = "/user/sendverificationcode/{email}"
         case passwordReset = "/user/passwordreset"
-        case homeAll = "/Home/All"
+        case homeGetAll = "/Home/GetAll"
     }
 
     func getURL(for endpoint: Endpoint, email: String? = nil) -> URL? {

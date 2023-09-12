@@ -30,7 +30,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-
+        
         
         loginScreenView.configureContractText(contractText, with: links)
         view.addSubview(contractText)
@@ -53,12 +53,12 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     }
     
     @objc func loginButtonTapped() {
-      
+        
         let email = loginScreenView.emailTextField2.text
         let password = loginScreenView.passwordTextField2.text
         guard let emailUnwrapped = email, !emailUnwrapped.isEmpty,
               let passwordUnwrapped = password, !passwordUnwrapped.isEmpty else {
-           
+            
             print("Lütfen tüm alanları doldurunuz.")
             return
         }
@@ -81,16 +81,16 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     
     @objc func handleAgreementTab() {
         isAgreed.toggle() // true
-            if isAgreed {
-                let checkmark = UIImage(named: "done")
-                loginScreenView.agreementButton.setImage(checkmark, for: .normal)
-                loginScreenView.agreementButton.tintColor = .white
-                loginScreenView.agreementButton.backgroundColor = .white
-            } else {
-                let cleanMark = UIImage(named:"clean")
-                loginScreenView.agreementButton.setImage(cleanMark, for: .normal)
-                loginScreenView.agreementButton.backgroundColor = .white
-            }
+        if isAgreed {
+            let checkmark = UIImage(named: "done")
+            loginScreenView.agreementButton.setImage(checkmark, for: .normal)
+            loginScreenView.agreementButton.tintColor = .white
+            loginScreenView.agreementButton.backgroundColor = .white
+        } else {
+            let cleanMark = UIImage(named:"clean")
+            loginScreenView.agreementButton.setImage(cleanMark, for: .normal)
+            loginScreenView.agreementButton.backgroundColor = .white
+        }
     }
     
     @objc func signUpButtonTapped() {
@@ -104,7 +104,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         let name = loginScreenView.nameTextField.text
         let email = loginScreenView.emailTextField.text
         let password = loginScreenView.passwordTextField.text
-       
+        
         guard let usernameUnwrapped = name , !usernameUnwrapped.isEmpty,
               let emailUnwrapped = email , !emailUnwrapped.isEmpty,
               let passwordUnwrapped = password , !passwordUnwrapped.isEmpty else {

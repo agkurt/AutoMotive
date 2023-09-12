@@ -156,13 +156,14 @@ class AuthService {
             completion(false, "Failed to create URL.")
         }
     }
-    func fetchHomeData(completion: @escaping (Bool, HomeResponse?, String?) -> Void) {
-        if let url = APIManager.shared.getURL(for: .homeAll) {
+    func fetchHomeData(completion: @escaping (Bool, HomeData?, String?) -> Void) { //
+        if let url = APIManager.shared.getURL(for: .homeGetAll) {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.allHTTPHeaderFields = APIManager.shared.getDefaultHeaders()
 
             URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
                 if let httpResponse = response as? HTTPURLResponse {
                     print("HTTP Status Code: \(httpResponse.statusCode)")
                 }
@@ -173,8 +174,8 @@ class AuthService {
                 }
 
                 do {
-                    let homeResponse = try JSONDecoder().decode(HomeResponse.self, from: data)
-                    completion(true, homeResponse, nil)
+                    let homeData = try JSONDecoder().decode(HomeData.self, from: data)
+                    completion(true, homeData, nil)
                 } catch {
                     print("Failed to decode: \(error)")
                     completion(false, nil, error.localizedDescription)

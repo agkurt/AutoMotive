@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate, HomeViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate, HomeViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     private var homeModel = HomeModel()
@@ -67,10 +67,8 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
         case 0 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
             let category = homeModel.categories[indexPath.row]
-            cell.imageView.image = UIImage(named: category.image)
-            cell.label.text = category.title
             cell.backgroundColor = .black
-            cell.configureCell(with: [category])
+            cell.configureCell(with: homeModel.categories)
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastGarageCell", for: indexPath) as! fastGarageCollectionViewCell
@@ -79,7 +77,9 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
         case 2 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productsCell", for: indexPath)
             cell.backgroundColor = .blue
+            
             return cell
+            
         default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             cell.backgroundColor = .blue
@@ -91,9 +91,9 @@ class HomeController: UIViewController, UISearchBarDelegate, UITextFieldDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0 :
-            return CGSize(width: 390, height: 173)
+            return CGSize(width: view.bounds.width, height: 173)
         case 1 :
-            return CGSize(width: 390, height: 104)
+            return CGSize(width: view.bounds.width, height: 104)
         default :
             return CGSize(width: view.bounds.width, height: view.bounds.height)
         }

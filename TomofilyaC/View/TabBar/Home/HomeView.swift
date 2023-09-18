@@ -16,6 +16,7 @@ class HomeView: UIView {
     let tomofilyaImage = UIImageView()
     let favoriteButton = UIButton()
     let searchBar = createSearchBar()
+    private let categoryLabel = UILabel()
     
         let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -75,6 +76,7 @@ class HomeView: UIView {
         setupImageView()
         configureButton(favoriteButton)
         setupCollectionView()
+        configureLabel(categoryLabel)
     }
     
     
@@ -129,6 +131,18 @@ class HomeView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
             
+        ])
+    }
+    private func configureLabel(_ label : UILabel) {
+        label.text = "Kategoriler"
+        label.font = UIFont(name: "Poppins-Regular", size: 12)
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.white
+    
+        NSLayoutConstraint.activate( [
+            label.widthAnchor.constraint(equalToConstant: 70),
+            label.heightAnchor.constraint(equalToConstant: 17),
         ])
     }
 }

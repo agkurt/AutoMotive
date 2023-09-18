@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
     }
     private func setupTabs() {
         
-        let home = self.createNav(with: "Ana Sayfa", and: UIImage(named: "Home"), vc: HomeController())
+        let home = self.createNav(with: "Ana Sayfa", and: UIImage(named: "Home"), vc: HomeCollectionViewController())
         let message = self.createNav(with: "Mesajlar", and: UIImage(named: "Message"), vc: MessageController())
         let garage = self.createNav(with: "Garajım", and: UIImage(named: "barLogo"), vc: GarageController())
         let shop = self.createNav(with: "Sepetim", and: UIImage(named: "Shopping"), vc: ShopController())

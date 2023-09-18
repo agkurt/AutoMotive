@@ -23,7 +23,6 @@ class fastGarageCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupCell() {
-        
         for _ in 0...12 {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false

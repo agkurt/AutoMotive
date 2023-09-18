@@ -68,7 +68,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         AuthService.shared.login(credentials: credentials) { (success, messageOrToken) in
             DispatchQueue.main.async {
                 if success {
-                    let homeVc = HomeController()
+                    let homeVc = HomeCollectionViewController()
                     self.navigationController?.pushViewController(homeVc, animated: true)
                     print("Başarılı giriş! Token: \(messageOrToken ?? "N/A")")
                 } else {
@@ -174,7 +174,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
                             if success {
                                 if isSocialMediaAccount {
                                     print("Successfully logged in with Gmail! It's a social media account. Token: \(messageOrToken ?? "N/A")")
-                                    let homeVc = HomeController()
+                                    let homeVc = HomeCollectionViewController()
                                     self.navigationController?.pushViewController(homeVc, animated: true)
                                 } else {
                                     print("Successfully logged in with Gmail! Token: \(messageOrToken ?? "N/A")")

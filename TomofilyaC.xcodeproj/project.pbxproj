@@ -20,7 +20,7 @@
 		E8A4AFDB2AAF6ADC0020C9CA /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4AFDA2AAF6ADC0020C9CA /* ProductsCollectionViewCell.swift */; };
 		E8A4AFDD2AAF6B200020C9CA /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4AFDC2AAF6B200020C9CA /* ProductsView.swift */; };
 		E8BC16D92A97DF7600EDA8CB /* GidToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BC16D82A97DF7600EDA8CB /* GidToken.swift */; };
-		E8DB74492A9CB8A10084AB29 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74482A9CB8A10084AB29 /* HomeController.swift */; };
+		E8DB74492A9CB8A10084AB29 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74482A9CB8A10084AB29 /* HomeCollectionViewController.swift */; };
 		E8DB744F2A9CD1AE0084AB29 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */; };
 		E8DB74512A9CD1BE0084AB29 /* GarageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74502A9CD1BE0084AB29 /* GarageController.swift */; };
 		E8DB74532A9CD1EF0084AB29 /* ShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB74522A9CD1EF0084AB29 /* ShopController.swift */; };
@@ -86,7 +86,7 @@
 		E8A4AFDA2AAF6ADC0020C9CA /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8A4AFDC2AAF6B200020C9CA /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
 		E8BC16D82A97DF7600EDA8CB /* GidToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GidToken.swift; sourceTree = "<group>"; };
-		E8DB74482A9CB8A10084AB29 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		E8DB74482A9CB8A10084AB29 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		E8DB744E2A9CD1AE0084AB29 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		E8DB74502A9CD1BE0084AB29 /* GarageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageController.swift; sourceTree = "<group>"; };
 		E8DB74522A9CD1EF0084AB29 /* ShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopController.swift; sourceTree = "<group>"; };
@@ -251,6 +251,20 @@
 			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
+		E8A4B0002AB497270020C9CA /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		E8A4B0012AB497A10020C9CA /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		E8DB74462A9CB6240084AB29 /* TabbarControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				E8E5261A2AA9BD7F009635C6 /* CollectionViewCells */,
-				E8DB74482A9CB8A10084AB29 /* HomeController.swift */,
+				E8DB74482A9CB8A10084AB29 /* HomeCollectionViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -294,6 +308,7 @@
 		E8E5261D2AA9C552009635C6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E8A4B0002AB497270020C9CA /* Product */,
 				E8E526252AAA2349009635C6 /* homeGetAll.swift */,
 				E8E49AD92AA62DE20079F820 /* HomeModel.swift */,
 				E84AD9442AA8653000150296 /* CategoryItem.swift */,
@@ -335,6 +350,7 @@
 		E8E526292AAF0B76009635C6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E8A4B0012AB497A10020C9CA /* Product */,
 				E8E49AD72AA62DBF0079F820 /* HomeView.swift */,
 				E8E5262A2AAF0B9A009635C6 /* fastGarageView.swift */,
 				E8A4AFDC2AAF6B200020C9CA /* ProductsView.swift */,
@@ -556,7 +572,7 @@
 				E8834C242A8F9286002853D8 /* ForgotPasswordViewController.swift in Sources */,
 				E8E49AD82AA62DBF0079F820 /* HomeView.swift in Sources */,
 				E8DB744F2A9CD1AE0084AB29 /* MessageController.swift in Sources */,
-				E8DB74492A9CB8A10084AB29 /* HomeController.swift in Sources */,
+				E8DB74492A9CB8A10084AB29 /* HomeCollectionViewController.swift in Sources */,
 				E8A4AFDB2AAF6ADC0020C9CA /* ProductsCollectionViewCell.swift in Sources */,
 				E8DD60CA2A8F01A200B5C3C9 /* LinkModel.swift in Sources */,
 				E8384FB92A7BF7A8005FE9F5 /* SceneDelegate.swift in Sources */,

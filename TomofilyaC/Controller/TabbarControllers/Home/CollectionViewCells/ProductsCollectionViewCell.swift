@@ -8,6 +8,7 @@
 import UIKit
 
 class ProductsCollectionViewCell : UICollectionViewCell {
+    var sections : [UIView] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +18,11 @@ class ProductsCollectionViewCell : UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
+    
+    
 
 }
 

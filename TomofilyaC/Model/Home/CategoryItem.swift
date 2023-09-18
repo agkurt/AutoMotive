@@ -5,8 +5,9 @@
 //  Created by Ahmet Göktürk Kurt on 6.09.2023.
 //
 
-import UIKit
+import Foundation
 
 struct CategoryItem {
-    let title , image : String
+    let title : String
+    let image : String
 }

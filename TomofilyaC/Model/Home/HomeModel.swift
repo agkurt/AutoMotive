@@ -5,9 +5,9 @@
 //  Created by Ahmet Göktürk Kurt on 4.09.2023.
 //
 
-import UIKit
+import Foundation
 
-class HomeModel {
+struct HomeModel {
     var categories: [CategoryItem] = [
         CategoryItem(title: "Araç & Yedek Parça & Aksesuar", image: "part"),
         CategoryItem(title: "Jant & Lastik", image: "wheel"),

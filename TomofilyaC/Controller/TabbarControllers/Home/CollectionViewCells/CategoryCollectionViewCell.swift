@@ -18,7 +18,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        configureLabel(categoryLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +25,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        for _ in 0..<6 {
+        for _ in 0..<6 { // viewler oluşturuldu.
             let sectionView = UIView()
             sectionView.translatesAutoresizingMaskIntoConstraints = false
             sectionView.backgroundColor = .black
@@ -38,7 +37,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             
         }
         
-        for i in 0..<3 {
+        for i in 0..<3 { // üst 3 view için for döngüsü yazıldı.
             NSLayoutConstraint.activate([
                 sections[i].topAnchor.constraint(equalTo: contentView.topAnchor),
                 sections[i].leadingAnchor.constraint(equalTo: i == 0 ? contentView.leadingAnchor : sections[i-1].trailingAnchor, constant: 13),
@@ -47,7 +46,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             ])
         }
         
-        for i in 3..<6 {
+        for i in 3..<6 { // alt 3 view için for döngüsü yazıldı.
             NSLayoutConstraint.activate([
                 sections[i].topAnchor.constraint(equalTo: sections[0].bottomAnchor, constant: 13),
                 sections[i].leadingAnchor.constraint(equalTo: i == 3 ? contentView.leadingAnchor : sections[i-1].trailingAnchor, constant: 13),
@@ -57,19 +56,21 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureCell(with categories: [CategoryItem]) {
+    func configureCell(with categories: [CategoryItem]) { // CategoryItem içerisinden title ve image'leri çekebilmek için for döngüsü kullanıldı.
         for (index, category) in categories.enumerated() {
             let label = UILabel()
-            label.text = category.title
+            label.text = category.title // category içerisindeki titlelar çekildi.
             label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 12)
+            label.textColor = UIColor.white
+            label.numberOfLines = 1
+            label.font = UIFont(name: "Poppins-Regular", size: 8)
+        
             
             let imageView = UIImageView()
-            imageView.image = UIImage(named: category.image)
+            imageView.image = UIImage(named: category.image) // category içerisindeki imageler çekildi.
             imageView.contentMode = .scaleAspectFit
-            let section = sections[index]
             
-            section.subviews.forEach { $0.removeFromSuperview() }
+            let section = sections[index]
             
             let innerStackView = UIStackView(arrangedSubviews: [imageView, label])
             innerStackView.axis = .vertical
@@ -82,20 +83,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
                 innerStackView.centerYAnchor.constraint(equalTo: section.centerYAnchor)
             ])
         }
-    }
-    func configureLabel(_ label : UILabel) {
-        label.text = "Kategoriler"
-        label.font = UIFont(name: "Poppins-Regular", size: 12)
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.white
-        
-        NSLayoutConstraint.activate( [ 
-            label.widthAnchor.constraint(equalToConstant: 70),
-            label.heightAnchor.constraint(equalToConstant: 17),
-//            label.topAnchor.constraint(equalTo: homeView.searchBar.bottomAnchor, constant: 10)
-
-        ])
     }
     
 }

@@ -6,48 +6,50 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class fastGarageCollectionViewCell: UICollectionViewCell {
-    let garageView = fastGarageView()
-    var sections : [UIView] = []
-    
+
+    let cellImage = UIImageView()
+    let cellTitle = UILabel()
+    private var homeData : HomeData?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(garageView)
+        setupCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
     
     private func setupCell() {
-        for _ in 0...12 {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = .black
-            view.layer.cornerRadius = 20
-            view.layer.borderWidth = 0.5
-            view.layer.borderColor = UIColor.white.cgColor
-            addSubview(view)
-            
-            NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalToConstant: 40),
-                view.heightAnchor.constraint(equalToConstant: 40),
-            ])
-            
-            let stackView = UIStackView()
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.axis = .horizontal
-            stackView.spacing = 33
-            
-            NSLayoutConstraint.activate([
-                stackView.widthAnchor.constraint(equalToConstant: 390),
-                stackView.heightAnchor.constraint(equalToConstant: 104),
-            ])
-            
-        }
-      
+        cellImage.layer.borderColor = UIColor.white.cgColor
+        cellImage.translatesAutoresizingMaskIntoConstraints = false
+        cellImage.layer.cornerRadius = 20
+        addSubview(cellImage)
+       
+        NSLayoutConstraint.activate([
+            cellImage.widthAnchor.constraint(equalToConstant: 40),
+            cellImage.heightAnchor.constraint(equalToConstant: 40),
+        ])
+       
+        cellTitle.font = UIFont(name: "Poppins-Light", size: 6)
+        cellTitle.textColor = UIColor.white
+        cellTitle.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(cellTitle)
+       
+        NSLayoutConstraint.activate([
+            cellTitle.widthAnchor.constraint(equalToConstant: 48),
+            cellTitle.heightAnchor.constraint(equalToConstant: 8),
+            cellTitle.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: 8)
+        ])
+    }
+    
+    func configureCell(with garage : Garage) {
+        let url = URL(string: garage.logoUrl)
+        cellImage.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
+        cellTitle.text = garage.userName
     }
 }

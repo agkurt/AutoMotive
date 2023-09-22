@@ -11,19 +11,10 @@ import UIKit
 class ResetPasswordViewController: UIViewController {
     
     let resetPasswordView = ResetPasswordView() 
-    var email: String
-    var code: String
+    var email: String?
+    var code: String?
     
-    init(email: String, code: String) {
-        self.email = email
-        self.code = code
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(resetPasswordView)
@@ -54,23 +45,22 @@ class ResetPasswordViewController: UIViewController {
             return
         }
         
-        AuthService.shared.resetPassword(email: email, code: code, newPassword: newPassword) { (success, errorMessage) in
-              DispatchQueue.main.async {
-                  if success {
-                      let loginVC = LoginViewController()
-                      loginVC.loginScreenView.loginSegmentedControl.selectedSegmentIndex = 0
-                      self.navigationController?.setViewControllers([loginVC], animated: true)
-
-                  } else {
-                      // Şifre değiştirme başarısız oldu. Hata mesajını göster.
-                      self.showAlert(title: "Hata", message: errorMessage ?? "Bir hata oluştu.")
-                  }
-              }
-          }
+        let changePasswordRequest = UserNetworkServiceRoute.passwordReset(email: email!, code: code!, password: newPassword)
+        Network.send(request: changePasswordRequest) { (result :Result<PasswordResetResponse , Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Başarılı \(response)")
+                    let vc = LoginViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print("Başarısız \(error)")
+            }
+        }
     }
     
     @objc func cancelTapped() {
-        
         navigationController?.popViewController(animated: true)
     }
     

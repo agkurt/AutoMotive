@@ -8,6 +8,6 @@
 import Foundation
 
 enum SocialPlatform: String {
-    case Google
-    case Apple
+    case Google = "Google"
+    case Apple = "Apple"
 }

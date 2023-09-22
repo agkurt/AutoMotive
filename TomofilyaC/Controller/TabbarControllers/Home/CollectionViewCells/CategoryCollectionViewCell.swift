@@ -65,7 +65,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             label.numberOfLines = 1
             label.font = UIFont(name: "Poppins-Regular", size: 8)
         
-            
             let imageView = UIImageView()
             imageView.image = UIImage(named: category.image) // category içerisindeki imageler çekildi.
             imageView.contentMode = .scaleAspectFit

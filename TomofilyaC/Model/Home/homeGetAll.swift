@@ -7,11 +7,7 @@
 
 import Foundation // eğer UI işlemi yapmıyosan foundation kalsın.
 
-struct APIResponse: Decodable {
-    let data: HomeData
-    let success: Bool
-    let message: String
-}
+
 
 struct HomeData: Decodable {
     let categories: [Category]?
@@ -28,7 +24,7 @@ struct Category: Decodable {
     let subCategories: [String?]
 }
 
-class Garage: Decodable {
+struct Garage: Decodable { // for fast garages
     let id: Int
     let logoUrl: String
     let userName: String
@@ -160,3 +156,4 @@ struct GarageInfo: Decodable {
     let garageId: Int
     let garageType: String
 }
+

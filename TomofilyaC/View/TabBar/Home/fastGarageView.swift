@@ -40,32 +40,4 @@ class fastGarageView : UIView {
            
         ])
     }
-     func configureCell(with image :String , title : String) {
-        let cellImage = UIImageView()
-        cellImage.image = UIImage(named: image)
-        cellImage.layer.borderColor = UIColor.white.cgColor
-        cellImage.translatesAutoresizingMaskIntoConstraints = false
-        cellImage.layer.cornerRadius = 20
-        addSubview(cellImage)
-        
-        NSLayoutConstraint.activate([
-            cellImage.widthAnchor.constraint(equalToConstant: 40),
-            cellImage.heightAnchor.constraint(equalToConstant: 40),
-            cellImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16)
-        ])
-        
-        let cellTitle = UILabel()
-        cellTitle.font = UIFont(name: "Poppins-Light", size: 6)
-        cellTitle.textColor = UIColor.white
-        cellTitle.translatesAutoresizingMaskIntoConstraints = false
-         cellTitle.text = title
-        addSubview(cellTitle)
-        
-        NSLayoutConstraint.activate([
-            cellTitle.widthAnchor.constraint(equalToConstant: 48 ),
-            cellTitle.heightAnchor.constraint(equalToConstant: 8 ),
-            cellTitle.topAnchor.constraint(equalTo: cellImage.bottomAnchor, constant: 8)
-        ])
-    }
-    
 }

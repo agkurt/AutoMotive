@@ -12,9 +12,7 @@ class MailVerifyViewController : UIViewController {
     var email: String
     var timer: Timer?
     var remainingSeconds = 1.30
-    
-    
-    
+
     init(email: String) {
         self.email = email
         super.init(nibName: nil, bundle: nil)
@@ -61,10 +59,18 @@ class MailVerifyViewController : UIViewController {
     }
     
     @objc func sendButtonTapped() {
-        let code1 = mailVerifyVC.no1.text ?? ""
-        let code2 = mailVerifyVC.no2.text ?? ""
-        let code3 = mailVerifyVC.no3.text ?? ""
-        let code4 = mailVerifyVC.no4.text ?? ""
+        
+        guard let code1 = mailVerifyVC.no1.text ,
+              let code2 = mailVerifyVC.no2.text ,
+              let code3 = mailVerifyVC.no3.text ,
+              let code4 = mailVerifyVC.no4.text ,
+              !code1.isEmpty,
+              !code2.isEmpty,
+              !code3.isEmpty,
+              !code4.isEmpty else {
+            print("Tüm boşlukları doldurunuz")
+            return
+        }
         
         let fullCode = code1 + code2 + code3 + code4
         
@@ -75,20 +81,17 @@ class MailVerifyViewController : UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-        AuthService.shared.verify(email: email, code: fullCode) { (success, errorMessage) in
-            DispatchQueue.main.async {
-                if success {
-                    // Doğrulama başarılıysa
-                    let logInVC = LoginViewController()
-                    self.navigationController?.pushViewController(logInVC, animated: true)
-                } else {
-                    
-                    // Doğrulama başarısızsa
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+        let verifyRequest = UserNetworkServiceRoute.verifyCode(email: email, code: fullCode)
+        Network.send(request: verifyRequest) { (result : Result<SocialResponseModel , Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Başarılı \(response)")
+                    let vc = LoginViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
+            case .failure(let error):
+                print("Başarısız \(error)")
             }
         }
     }

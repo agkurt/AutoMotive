@@ -45,9 +45,6 @@ class LoginScreenView: UIView {
     
     weak var delegate: LoginScreenViewDelegate?
     
-    
-    
-    
     lazy var loginSegmentedControl: UISegmentedControl = {
         let items = ["Kayıt Ol", "Giriş Yap"]
         let segmentedControl = UISegmentedControl(items: items)
@@ -83,12 +80,10 @@ class LoginScreenView: UIView {
     }
     func configureContractText(_ textView: UITextView, with links: [LinkModel]) {
         let baseText = "Uygulamaya üye olarak; Üyelik Sözleşmesi’ni ve Kişisel Veriler ile İlgili Aydınlatma Metni’ni okuduğunuzu ve kabul ettiğinizi onaylamaktasınız."
-        
         let links = [
             LinkModel(text: "Üyelik Sözleşmesi", url: URL(string: "https://tomofilyastorage.blob.core.windows.net/contracts/Tomofilya_Uyelik_Sozlesmesi.pdf")!),
             LinkModel(text: "Kişisel Veriler ile İlgili Aydınlatma Metni", url: URL(string: "https://tomofilyastorage.blob.core.windows.net/contracts/Tomofilya_KVKK_Aydinlatma_Metni.pdf")!)
         ]
-        
 
         let attributedString = NSMutableAttributedString(string: baseText)
         for link in links {
@@ -361,5 +356,24 @@ class LoginScreenView: UIView {
         logInProcessStack = createStackView(arrangedSubviews: [emailTextField2 , passwordTextField2], spacing: 16)
         addSubview(logInProcessStack)
     }
+    
+    private func spinner() {
+        let spinner = UIActivityIndicatorView()
+           var isLoading = false {
+               didSet {
+               }
+    }
+        spinner.hidesWhenStopped = true
+        spinner.color = UIColor.white
+        spinner.style = .medium
+        addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+        
+    }
+    
 
 }

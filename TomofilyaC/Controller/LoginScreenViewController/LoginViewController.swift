@@ -9,12 +9,10 @@ import UIKit
 import GoogleSignIn
 
 class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextViewDelegate  {
-    
-    
+
     var userCredentials : UserCredentials!
     var loginScreenView = LoginScreenView()
     var isAgreed = false
-    
     let contractText: UITextView = {
         let textView = UITextView()
         return textView
@@ -30,7 +28,6 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
         
         loginScreenView.configureContractText(contractText, with: links)
         view.addSubview(contractText)
@@ -53,28 +50,32 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     }
     
     @objc func loginButtonTapped() {
-        
-        let email = loginScreenView.emailTextField2.text
-        let password = loginScreenView.passwordTextField2.text
-        guard let emailUnwrapped = email, !emailUnwrapped.isEmpty,
-              let passwordUnwrapped = password, !passwordUnwrapped.isEmpty else {
-            
-            print("Lütfen tüm alanları doldurunuz.")
+        guard
+            let email = loginScreenView.emailTextField2.text ,
+            let password = loginScreenView.passwordTextField2.text,
+            !email.isEmpty,
+            !password.isEmpty else {
+            print("Tüm alanları doldurunuz")
             return
         }
+        login(email: email, password: password)
         
-        let credentials = ["email": emailUnwrapped, "password": passwordUnwrapped]
-        
-        AuthService.shared.login(credentials: credentials) { (success, messageOrToken) in
-            DispatchQueue.main.async {
-                if success {
-                    let homeVc = HomeCollectionViewController()
-                    self.navigationController?.pushViewController(homeVc, animated: true)
-                    print("Başarılı giriş! Token: \(messageOrToken ?? "N/A")")
-                } else {
-                    // Hatalı giriş işlemi sonrası işlemler
-                    print("Giriş başarısız! Hata: \(messageOrToken ?? "Bilinmeyen hata")")
+    }
+    private func login(email : String , password: String) {
+        let loginRequest = UserNetworkServiceRoute.login(email: email, password: password)
+        Network.send(request: loginRequest) { ( result : Result<LoginResponseModel , Error>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Başarılı \(response)")
+                    let vc = TabBarController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    let alert = UIAlertController(title: "OK", message: "Başarılı" , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert , animated: true , completion: nil)
                 }
+            case .failure(let error):
+                print("Başarısız \(error)")
             }
         }
     }
@@ -94,51 +95,64 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     }
     
     @objc func signUpButtonTapped() {
-        print("Kayıt ol butonuna tıklandı.")
-        
-        print("name: \(loginScreenView.nameTextField.text ?? "nil")")
-        print("email: \(loginScreenView.emailTextField.text ?? "nil")")
-        print("password: \(loginScreenView.passwordTextField.text ?? "nil")")
-        
-        
-        let name = loginScreenView.nameTextField.text
-        let email = loginScreenView.emailTextField.text
-        let password = loginScreenView.passwordTextField.text
-        
-        guard let usernameUnwrapped = name , !usernameUnwrapped.isEmpty,
-              let emailUnwrapped = email , !emailUnwrapped.isEmpty,
-              let passwordUnwrapped = password , !passwordUnwrapped.isEmpty else {
-            
-            print("Lütfen tüm alanları doldurunuz.")
+        print("Kayıt ol butonuna tıklandı")
+        guard
+            let fullName = loginScreenView.nameTextField.text ,
+            let email = loginScreenView.emailTextField.text ,
+            let password = loginScreenView.passwordTextField.text ,
+            !fullName.isEmpty,
+            !email.isEmpty,
+            !password.isEmpty else {
+            print("Tüm alanları doldurunuz")
             return
         }
-        
-        // API'ye gönderilecek bilgilerin hazırlanması
-        let credentials = ["fullName" : usernameUnwrapped , "email" : emailUnwrapped , "password" : passwordUnwrapped]
-        
-        
-        // Kayıt olma işleminin gerçekleştirilmesi
-        AuthService.shared.register(userDetails: credentials) { (success, messageOrToken) in
-            DispatchQueue.main.async {
-                if success {
-                    // Başarılı kayıt işlemi sonrası işlemler
-                    print("Başarılı kayıt! Token: \(messageOrToken ?? "N/A")")
-                    let mailVerifyVC = MailVerifyViewController(email: email ?? "")
-                    self.navigationController?.pushViewController(mailVerifyVC, animated: true)
-                    
-                } else {
-                    // Hatalı kayıt işlemi sonrası işlemler
-                    print("Kayıt başarısız! Hata: \(messageOrToken ?? "Bilinmeyen hata")")
+        register(fullName: fullName, email: email, password: password) { Result in
+            switch Result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Başarılı : \(response)")
                 }
+            case .failure(let error):
+                print("Başarısız: \(error)")
+            }
+        }
+    }
+    
+    private func sendVerificationCode(email : String) {
+        let sendVerificationRequest = UserNetworkServiceRoute.sendVerificationCode(email: email)
+        Network.send(request: sendVerificationRequest) { (result : Result<SendVerificationResponse, Error> ) in
+            switch result {
+            case .success(let response) :
+                DispatchQueue.main.async {
+                    print("Mail gönderme başarılı : \(response)")
+                }
+            case .failure(let error) :
+                print("Mail gönderme başarısız : \(error)")
+                
+            }
+            
+        }
+    }
+    func register(fullName: String, email: String, password: String, completion: @escaping (Result<RegisterResponseModel, Error>) -> Void) {
+        let registerRequest = UserNetworkServiceRoute.register(fullName: fullName, email: email, password: password)
+        Network.send(request: registerRequest) { (result : Result< RegisterResponseModel , Error> )in
+            switch result {
+            case .success(let response) :
+                DispatchQueue.main.async {
+                    print("Başarılı! Yanıt : \(response)")
+                    self.sendVerificationCode(email: email)
+                    let vc = VerificationViewController(email: email)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print("Hata :\(error.localizedDescription)")
             }
         }
     }
     
     @objc func handleLoginButton() {
         print("Giriş Yap butonuna tıklandı.")
-        
     }
-    
     
     @objc func handleAppleLoginButton() {
         print("Apple ile Giriş Yap butonuna tıklandı.")
@@ -169,35 +183,38 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
                 
                 if let idTokenValue = user.idToken {
                     let idTokenString = idTokenValue.tokenString
-                    AuthService.shared.socialLogin(token: idTokenString, platform: .Google) { (success, messageOrToken, isSocialMediaAccount) in
-                        DispatchQueue.main.async {
-                            if success {
-                                if isSocialMediaAccount {
-                                    print("Successfully logged in with Gmail! It's a social media account. Token: \(messageOrToken ?? "N/A")")
-                                    let homeVc = HomeCollectionViewController()
-                                    self.navigationController?.pushViewController(homeVc, animated: true)
-                                } else {
-                                    print("Successfully logged in with Gmail! Token: \(messageOrToken ?? "N/A")")
-                                }
-                            } else {
-                                print("Failed to login with Gmail. Error: \(messageOrToken ?? "Unknown error")")
+                    let registerRequest = UserNetworkServiceRoute.socialLogin(token: idTokenString, platform: "Google")
+                    Network.send(request: registerRequest) {(result : Result<SocialResponseModel , Error>) in
+                        switch result {
+                        case.success(let response):
+                            DispatchQueue.main.async {
+                                print("Başarılı \(response)")
+                                let vc = TabBarController()
+                                self.navigationController?.pushViewController(vc, animated: true)
+                                let alert = UIAlertController(title: "OK", message: "Başarılı" , preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                                self.present(alert , animated: true , completion: nil)
                             }
+                        case .failure(let error):
+                            print("Başarısız \(error)")
                         }
                     }
-                } else {
+                }else {
                     print("Failed to obtain idToken")
                 }
             }
         }
     }
-    
-    
     @objc func handlePasswordTitleButon() {
         let forgotPasswordVC = ForgotPasswordViewController()
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
     }
-    
     func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         loginScreenView.updateUIForSelectedSegment()
     }
+    
 }
+
+
+
+

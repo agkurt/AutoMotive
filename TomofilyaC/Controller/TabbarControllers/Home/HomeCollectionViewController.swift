@@ -15,11 +15,14 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
     private var garageView = fastGarageView()
     private var collectionView: UICollectionView?
     private var imageView = UIImageView()
+    private var homeData: HomeData?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        fetchHomeData()
+
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -58,8 +61,14 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int ) -> Int {
+        switch section {
+        case 0 :
             let cell = homeModel.categories.count
             return cell
+        default :
+            return 10
+        }
+        return 20
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,7 +81,10 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastGarageCell", for: indexPath) as! fastGarageCollectionViewCell
-            cell.backgroundColor = .blue
+            if let garages = homeData?.garages, !garages.isEmpty {
+                let garage = garages[indexPath.row]  // Bu satırı ekleyin
+                cell.configureCell(with: garage)
+            }
             return cell
         case 2 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productsCell", for: indexPath)
@@ -118,22 +130,5 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
         homeView.tomofilyaImage.layer.zPosition = 1
     }
     
-    func fetchHomeData() {
-        AuthService.shared.fetchHomeData { (success, homeDataResponse, errorMessage ) in
-            DispatchQueue.main.async {
-                if success,let homeData = homeDataResponse {
-                    self.collectionView?.reloadData() // update to data
-                    if let fastGarages = homeData.garages, !fastGarages.isEmpty {
-                        let firstGarages = fastGarages[0]
-                    }
-                } else {
-                    // Hata mesajını göster
-                    print(errorMessage ?? "Unknown error")
-                }
-            }
-        }
-    }
-
-
 }
-    
+

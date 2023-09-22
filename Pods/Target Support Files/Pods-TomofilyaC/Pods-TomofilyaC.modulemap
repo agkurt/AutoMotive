@@ -1,0 +1,6 @@
+framework module Pods_TomofilyaC {
+  umbrella header "Pods-TomofilyaC-umbrella.h"
+
+  export *
+  module * { export * }
+}

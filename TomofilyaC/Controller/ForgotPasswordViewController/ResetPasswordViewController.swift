@@ -10,7 +10,8 @@ import UIKit
 
 class ResetPasswordViewController: UIViewController {
     
-    let resetPasswordView = ResetPasswordView() 
+    let resetPasswordView = ResetPasswordView()
+    let forgotView = ForgotPasswordView()
     var email: String?
     var code: String?
     
@@ -39,13 +40,15 @@ class ResetPasswordViewController: UIViewController {
             showAlert(title: "Hata", message: "Lütfen şifreleri giriniz.")
             return
         }
+        guard let email = forgotView.emailField.text else {return}
+        guard let code = forgotView.passwordLabel.text else {return}
         
         if newPassword != confirmNewPassword {
             showAlert(title: "Hata", message: "Şifreler eşleşmiyor.")
             return
         }
         
-        let changePasswordRequest = UserNetworkServiceRoute.passwordReset(email: email!, code: code!, password: newPassword)
+        let changePasswordRequest = UserNetworkServiceRoute.passwordReset(email: email, code: code, password: newPassword)
         Network.send(request: changePasswordRequest) { (result :Result<PasswordResetResponse , Error>) in
             switch result {
             case .success(let response):
@@ -61,7 +64,9 @@ class ResetPasswordViewController: UIViewController {
     }
     
     @objc func cancelTapped() {
-        navigationController?.popViewController(animated: true)
+        guard let email = email else {return}
+        let vc = VerificationViewController(email: email)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showAlert(title: String, message: String) {

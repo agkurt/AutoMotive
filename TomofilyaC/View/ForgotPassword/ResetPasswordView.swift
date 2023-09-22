@@ -34,11 +34,11 @@ class ResetPasswordView : UIView {
         configureImage(imageView)
         
         changePasswordButton.anchor(top: topAnchor,bottom: nil,width: 304,height: 40,paddingTop: 409)
-        cancelButton.anchor(top: topAnchor,bottom: nil,width: 44,height: 17,paddingTop: 465)
+        cancelButton.anchor(top: topAnchor,bottom: nil,width: 80,height: 17,paddingTop: 465)
         newPasswordField.anchor(top: topAnchor,bottom: nil,width: 342,height: 44,paddingTop: 265)
         confirmNewPasswordField.anchor(top: topAnchor,bottom: nil,width: 342,height: 44,paddingTop: 325)
         imageView.anchor(top: topAnchor,bottom: nil,width: 121.93,height: 120,paddingTop: 105)
-        titleLabel.anchor(top: topAnchor,bottom: nil,width: 94,height: 17,paddingTop: 57)
+        titleLabel.anchor(top: topAnchor,bottom: nil,width: 120,height: 17,paddingTop: 57)
    
         
         

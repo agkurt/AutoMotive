@@ -16,7 +16,7 @@ case verifyCode(email: String, code: String)
 case login(email  :String , password : String)
 case socialLogin(token: String, platform: String)
 case sendVerificationCode(email: String)
-case passwordReset(email: String, verificationCode: String, password: String)
+case passwordReset(email: String, code: String, password: String)
 
     //create URL
     var url : URL {
@@ -75,8 +75,8 @@ case passwordReset(email: String, verificationCode: String, password: String)
             let parameters = ["token" : token , "platform" : platform]
             return try? JSONSerialization.data(withJSONObject: parameters ,options: [])
             
-        case .passwordReset(let email , let code , let password):
-            return try? JSONSerialization.data(withJSONObject: ["email" : email , "code" : code , "password" : password] , options: [])
+        case .passwordReset(let email , let code , let newPassword):
+            return try? JSONSerialization.data(withJSONObject: ["email" : email , "code" : code , "newPassword" : newPassword] , options: [])
         default:
             return nil
         }

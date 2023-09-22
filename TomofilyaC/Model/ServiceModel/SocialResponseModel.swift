@@ -8,6 +8,16 @@
 import Foundation
 
 struct SocialResponseModel : Decodable {
-    let token : String?
-    let platform : String?
+    let data : User?
+    let success : Bool?
+    let message : String?
+}
+
+struct User : Decodable {
+    let accessToken : String
+    let refreshToken : String
+    let fullName : String
+    let userID : Int
+    let expiration : String
+    let isSocialMediaAccount : Bool
 }

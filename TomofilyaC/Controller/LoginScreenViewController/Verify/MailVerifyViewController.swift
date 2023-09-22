@@ -9,27 +9,16 @@ import UIKit
 
 class MailVerifyViewController : UIViewController {
     let mailVerifyVC = MailVerifyView()
-    var email: String
+    var email: String?
     var timer: Timer?
     var remainingSeconds = 1.30
-
-    init(email: String) {
-        self.email = email
-        super.init(nibName: nil, bundle: nil)
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         startTimer()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "abc", style: .plain, target: nil, action: nil)
         mailVerifyVC.sendButton.addTarget(self, action: #selector(self.sendButtonTapped), for: .touchUpInside)
-        
         view.addSubview(mailVerifyVC)
         mailVerifyVC.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -81,8 +70,9 @@ class MailVerifyViewController : UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
+        guard let email = email else {return}
         let verifyRequest = UserNetworkServiceRoute.verifyCode(email: email, code: fullCode)
-        Network.send(request: verifyRequest) { (result : Result<SocialResponseModel , Error>) in
+        Network.send(request: verifyRequest) { (result : Result<VerifyCodeResponse , Error>) in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {

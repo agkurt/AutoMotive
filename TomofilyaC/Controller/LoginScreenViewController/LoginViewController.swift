@@ -27,6 +27,9 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         navigationItem.hidesBackButton = true
         
         loginScreenView.configureContractText(contractText, with: links)
@@ -106,16 +109,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
             print("Tüm alanları doldurunuz")
             return
         }
-        register(fullName: fullName, email: email, password: password) { Result in
-            switch Result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    print("Başarılı : \(response)")
-                }
-            case .failure(let error):
-                print("Başarısız: \(error)")
-            }
-        }
+        register(fullName: fullName, email: email, password: password)
     }
     
     private func sendVerificationCode(email : String) {
@@ -133,7 +127,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
             
         }
     }
-    func register(fullName: String, email: String, password: String, completion: @escaping (Result<RegisterResponseModel, Error>) -> Void) {
+    func register(fullName: String, email: String, password: String) {
         let registerRequest = UserNetworkServiceRoute.register(fullName: fullName, email: email, password: password)
         Network.send(request: registerRequest) { (result : Result< RegisterResponseModel , Error> )in
             switch result {

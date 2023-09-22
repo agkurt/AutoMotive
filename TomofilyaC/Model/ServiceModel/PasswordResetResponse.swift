@@ -8,7 +8,6 @@
 import Foundation
 
 struct PasswordResetResponse : Decodable {
-    let email : String
-    let code : String
-    let newPassword : String
+    let success : Bool?
+    let message : String?
 }

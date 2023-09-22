@@ -15,6 +15,9 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         view.addSubview(forgotPasswordView)
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
 
         forgotPasswordView.sendButton.addTarget(self, action: #selector(self.fargotPasswordTap), for: .touchUpInside)
         forgotPasswordView.cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped), for: .touchUpInside)

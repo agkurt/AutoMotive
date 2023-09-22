@@ -33,20 +33,11 @@ class ForgotPasswordView : UIView {
         configureButton(sendButton, title: "Gönder", backgroundColor: UIColor.white, textColor: UIColor.black, size: 14)
         configureButton(cancelButton, title: "Vazgeç", backgroundColor: UIColor.clear, textColor: UIColor.white, size: 12)
         configureTextField(emailField, placeholder:"Email", cornerRadius: 20)
-        
-        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 105.37,paddingTop: 121.67)
-        sendButton.anchor(top: topAnchor , bottom:nil , width: 304 , height: 40 , paddingTop: 426)
-        informationLabel.anchor(top: topAnchor , bottom:nil , width: 326 , height: 60 , paddingTop: 274)
-        mailLabel.anchor(top: topAnchor , bottom:nil , width: 80, height: 30 , paddingTop: 241)
-        cancelButton.anchor(top: topAnchor , bottom:nil , width: 70, height: 17 , paddingTop: 482)
-        passwordLabel.anchor(top: topAnchor , bottom:nil , width: 150, height: 30 , paddingTop: 57)
-        emailField.anchor(top: topAnchor , bottom:nil , width: 304, height: 44 , paddingTop: 342)
+        anchors()
         
         
         
     }
-        
-    
     func configureLabel(_ label :UILabel ,text : String , hex : UIColor , name : String , size :CGFloat , aligment : NSTextAlignment) {
         label.text = text
         label.textColor = hex
@@ -93,5 +84,14 @@ class ForgotPasswordView : UIView {
         textField.becomeFirstResponder()
         textField.autocorrectionType = .no
         addSubview(textField)
+    }
+    private func anchors() {
+        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 105.37,paddingTop: 121.67)
+        sendButton.anchor(top: topAnchor , bottom:nil , width: 304 , height: 40 , paddingTop: 426)
+        informationLabel.anchor(top: topAnchor , bottom:nil , width: 326 , height: 60 , paddingTop: 274)
+        mailLabel.anchor(top: topAnchor , bottom:nil , width: 80, height: 30 , paddingTop: 241)
+        cancelButton.anchor(top: topAnchor , bottom:nil , width: 150, height: 17 , paddingTop: 482)
+        passwordLabel.anchor(top: topAnchor , bottom:nil , width: 150, height: 30 , paddingTop: 57)
+        emailField.anchor(top: topAnchor , bottom:nil , width: 304, height: 44 , paddingTop: 342)
     }
 }

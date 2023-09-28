@@ -25,6 +25,9 @@ struct Network {
             } catch {
                 completion(.failure(error))
             }
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Response Status Code: \(httpResponse.statusCode)")
+            }
         }
         .resume()
     }

@@ -13,7 +13,6 @@ class VerificationView : UIView, UITextFieldDelegate {
     let no2 = UITextField()
     let no3 = UITextField()
     let no4 = UITextField()
-    var fieldStackView = UIStackView()
     let imageView = UIImageView()
     let mailVerificationLabel = UILabel()
     let informationLabel = UILabel()
@@ -23,6 +22,8 @@ class VerificationView : UIView, UITextFieldDelegate {
     let againSendButton = UIButton()
     let againSendLabel = UILabel()
     var sendStackView = UIStackView()
+    var fieldStackView = UIStackView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,21 +55,8 @@ class VerificationView : UIView, UITextFieldDelegate {
         
         fieldStackView = UIStackView(arrangedSubviews: [no1, no2, no3, no4])
         sendStackView = UIStackView(arrangedSubviews: [againSendLabel , againSendButton])
-        configureStackView(fieldStackView , distribution: .fillEqually , spacing: 12)
-        configureStackView(sendStackView, distribution: .fill , spacing: 6)
-        fieldStackView.anchor(top: topAnchor,bottom: nil,width: 212,height: 54,paddingTop: 314)
-        sendStackView.anchor(top: topAnchor,bottom: nil,width: 221,height: 17,paddingTop: 497)
-        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 114.19,paddingTop: 102.81)
-        mailVerificationLabel.anchor(top: topAnchor,bottom: nil,width: 96,height: 17,paddingTop: 57)
-        informationLabel.anchor(top: topAnchor,bottom: nil,width: 274,height: 15,paddingTop: 270)
-        countdownLabel.anchor(top:topAnchor, bottom: nil, width:60, height: 17, paddingTop: 384)
-        sendButton.anchor(top:topAnchor, bottom: nil, width:304, height: 40, paddingTop: 441)
-        titleLabel.anchor(top:topAnchor, bottom: nil, width:62, height: 17, paddingTop: 241)
-        
-
+        anchors()
         textFieldConstraint()
-        
-        
     }
     func configureTextField(_ textField: UITextField, cornerRadius: CGFloat) {
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -100,9 +88,7 @@ class VerificationView : UIView, UITextFieldDelegate {
             no3.widthAnchor.constraint(equalToConstant: 44),
             no4.widthAnchor.constraint(equalToConstant: 44)
         ])
-        
     }
-    
     func configureImage(_ image : UIImageView) {
         image.image = UIImage(named: "sendemail")
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -147,5 +133,18 @@ class VerificationView : UIView, UITextFieldDelegate {
             textField.backgroundColor = .systemGray
         }
         return true
+    }
+    private func anchors() {
+        configureStackView(fieldStackView , distribution: .fillEqually , spacing: 12)
+        configureStackView(sendStackView, distribution: .fill , spacing: 6)
+        fieldStackView.anchor(top: topAnchor,bottom: nil,width: 212,height: 54,paddingTop: 314)
+        sendStackView.anchor(top: topAnchor,bottom: nil,width: 221,height: 17,paddingTop: 497)
+        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 114.19,paddingTop: 102.81)
+        mailVerificationLabel.anchor(top: topAnchor,bottom: nil,width: 96,height: 17,paddingTop: 57)
+        informationLabel.anchor(top: topAnchor,bottom: nil,width: 274,height: 15,paddingTop: 270)
+        countdownLabel.anchor(top:topAnchor, bottom: nil, width:60, height: 17, paddingTop: 384)
+        sendButton.anchor(top:topAnchor, bottom: nil, width:304, height: 40, paddingTop: 441)
+        titleLabel.anchor(top:topAnchor, bottom: nil, width:62, height: 17, paddingTop: 241)
+        
     }
 }

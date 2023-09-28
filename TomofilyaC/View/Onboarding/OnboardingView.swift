@@ -76,6 +76,7 @@ class OnboardingView: UIView {
         scrollView.isDirectionalLockEnabled = true
         addSubview(scrollView)
         
+        // düzenle anchor
         // scrollView kısıtlamaları
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -93,7 +94,7 @@ class OnboardingView: UIView {
         imageView.clipsToBounds = true
         
         addSubview(imageView)
-        
+        // düzenle anchor
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 160),
             imageView.heightAnchor.constraint(equalToConstant: 40),

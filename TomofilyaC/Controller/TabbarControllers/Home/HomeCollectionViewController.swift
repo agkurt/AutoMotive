@@ -29,11 +29,6 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
         guard let collectionView = collectionView else {
             return
         }
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "categoryCell")
-        collectionView.register(fastGarageCollectionViewCell.self, forCellWithReuseIdentifier: "fastGarageCell")
-        collectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: "productsCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.frame = view.bounds
@@ -61,44 +56,15 @@ class HomeCollectionViewController: UIViewController, UISearchBarDelegate, UITex
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int ) -> Int {
-        switch section {
-        case 0 :
-            let cell = homeModel.categories.count
-            return cell
-        default :
-            return 10
-        }
-        return 20
+       return 15
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.row {
-        case 0 :
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
-            let category = homeModel.categories[indexPath.row]
-            cell.backgroundColor = .black
-            cell.configureCell(with: homeModel.categories)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundColor = .red
             return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fastGarageCell", for: indexPath) as! fastGarageCollectionViewCell
-            if let garages = homeData?.garages, !garages.isEmpty {
-                let garage = garages[indexPath.row]  // Bu satırı ekleyin
-                cell.configureCell(with: garage)
-            }
-            return cell
-        case 2 :
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productsCell", for: indexPath)
-            cell.backgroundColor = .blue
-            
-            return cell
-            
-        default :
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = .blue
-            return cell
-        }
-        
     }
+    private let cellId = "cellId"
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {

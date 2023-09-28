@@ -8,10 +8,12 @@
 import UIKit
 import GoogleSignIn
 
-class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextViewDelegate  {
-
+class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextViewDelegate {
+    
     var userCredentials : UserCredentials!
     var loginScreenView = LoginScreenView()
+    let socialLogin = SocialLoginController()
+    
     var isAgreed = false
     let contractText: UITextView = {
         let textView = UITextView()
@@ -36,19 +38,18 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         view.addSubview(contractText)
         contractText.delegate = self
         
-        view.backgroundColor = UIColor.black
         loginScreenView = LoginScreenView(frame: view.bounds)
         loginScreenView.delegate = self
         view.addSubview(loginScreenView)
         
         loginScreenView.loginButton2.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        loginScreenView.appleLoginButton.addTarget(self, action: #selector(handleAppleLoginButton), for: .touchUpInside)
-        loginScreenView.gmailLoginButton.addTarget(self, action: #selector(handleGoogleLoginButton), for: .touchUpInside)
         loginScreenView.passwordTitleButton.addTarget(self, action: #selector(handlePasswordTitleButon), for: .touchUpInside)
         loginScreenView.loginSegmentedControl.selectedSegmentIndex = 0
         loginScreenView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginScreenView.agreementButton.addTarget(self, action: #selector(handleAgreementTab), for: .touchUpInside)
-        
+        loginScreenView.appleLoginButton.addTarget(self, action: #selector(handleAppleLoginButton), for: .touchUpInside)
+        loginScreenView.gmailLoginButton.addTarget(self, action: #selector(handleGoogleLoginButton), for: .touchUpInside)
+
         
     }
     
@@ -102,10 +103,11 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         guard
             let fullName = loginScreenView.nameTextField.text ,
             let email = loginScreenView.emailTextField.text ,
-            let password = loginScreenView.passwordTextField.text ,
+            let password = loginScreenView.passwordTextField.text,
             !fullName.isEmpty,
             !email.isEmpty,
-            !password.isEmpty else {
+            !password.isEmpty
+        else {
             print("Tüm alanları doldurunuz")
             return
         }
@@ -143,62 +145,17 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
             }
         }
     }
+    @objc func handleAppleLoginButton() {
+        socialLogin.handleAppleLoginButton()
+    }
+    @objc func handleGoogleLoginButton() {
+        socialLogin.handleGoogleLoginButton()
+    }
     
     @objc func handleLoginButton() {
         print("Giriş Yap butonuna tıklandı.")
     }
     
-    @objc func handleAppleLoginButton() {
-        print("Apple ile Giriş Yap butonuna tıklandı.")
-        
-    }
-    @objc func handleGoogleLoginButton() {
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-            guard error == nil else {
-                print("Google Sign-In hata: \(error!.localizedDescription)")
-                return
-            }
-            
-            guard let signInResult = signInResult else {
-                print("No sign-in result present")
-                return
-            }
-            
-            signInResult.user.refreshTokensIfNeeded { user, error in
-                guard error == nil else {
-                    print("Failed to refresh tokens: \(error!.localizedDescription)")
-                    return
-                }
-                
-                guard let user = user else {
-                    print("No user present after token refresh")
-                    return
-                }
-                
-                if let idTokenValue = user.idToken {
-                    let idTokenString = idTokenValue.tokenString
-                    let registerRequest = UserNetworkServiceRoute.socialLogin(token: idTokenString, platform: "Google")
-                    Network.send(request: registerRequest) {(result : Result<SocialResponseModel , Error>) in
-                        switch result {
-                        case.success(let response):
-                            DispatchQueue.main.async {
-                                print("Başarılı \(response)")
-                                let vc = TabBarController()
-                                self.navigationController?.pushViewController(vc, animated: true)
-                                let alert = UIAlertController(title: "OK", message: "Başarılı" , preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                self.present(alert , animated: true , completion: nil)
-                            }
-                        case .failure(let error):
-                            print("Başarısız \(error)")
-                        }
-                    }
-                }else {
-                    print("Failed to obtain idToken")
-                }
-            }
-        }
-    }
     @objc func handlePasswordTitleButon() {
         let forgotPasswordVC = ForgotPasswordViewController()
         self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
@@ -206,8 +163,14 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
     func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         loginScreenView.updateUIForSelectedSegment()
     }
-    
+    @objc func togglePasswordVisibility() {
+        let lgnView = loginScreenView
+        lgnView.passwordTextField.isSecureTextEntry = !lgnView.passwordTextField.isSecureTextEntry
+        let imageName = lgnView.passwordTextField.isSecureTextEntry ? "showIcon" : "visible"
+        lgnView.showHideButton.setImage(UIImage(named: imageName), for: .normal)
+    }
 }
+
 
 
 

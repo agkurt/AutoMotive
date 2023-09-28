@@ -9,7 +9,6 @@ import UIKit
 protocol LoginScreenViewDelegate: AnyObject {
     func handleLoginButton()
     func segmentedControlValueChanged(_ sender: UISegmentedControl)
-    
 }
 
 class LoginScreenView: UIView {
@@ -28,9 +27,9 @@ class LoginScreenView: UIView {
     let emailTextField2 = UITextField()
     let imageView = UIImageView()
     let forgotPasswordButton = UIButton()
-    let loginButton2 = UIButton()
-    let signUpButton = UIButton()
-    let passwordTitleButton = UIButton()
+    let loginButton2 = UIButton() //1
+    let signUpButton = UIButton()//2
+    let passwordTitleButton = UIButton() //3
     let contractText = UITextView()
     let buttonsView = UIView()
     let nameTextField = UITextField()
@@ -41,8 +40,7 @@ class LoginScreenView: UIView {
     let showHideButton = UIButton(type: .custom)
     let agreementLabel = UILabel()
     let agreementButton = UIButton()
-    
-    
+
     weak var delegate: LoginScreenViewDelegate?
     
     lazy var loginSegmentedControl: UISegmentedControl = {
@@ -68,15 +66,16 @@ class LoginScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureButton(_ button: UIButton, title: String, backgroundColor: UIColor, textColor: UIColor , isSignUpButton : Bool , size : CGFloat) {
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.backgroundColor = backgroundColor
-        button.setTitleColor(textColor, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 20
-        button.titleLabel?.font = UIFont(name: "Poppins-Light", size: size)
-        addSubview(button)
+    func setupUI() {
+        configureAllModel()
+        configureContractText(contractText, with: links)
+        configureAgreement()
+        configureStackField()
+        configureStackAgreement()
+        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 40,paddingTop: 61.29)
+        loginSegmentedControl.anchor(top: topAnchor,bottom: nil,width: 240,height: 44,paddingTop: 150)
+        loginScreenContraints()
+        updateUIForSelectedSegment()
     }
     func configureContractText(_ textView: UITextView, with links: [LinkModel]) {
         let baseText = "Uygulamaya üye olarak; Üyelik Sözleşmesi’ni ve Kişisel Veriler ile İlgili Aydınlatma Metni’ni okuduğunuzu ve kabul ettiğinizi onaylamaktasınız."
@@ -108,8 +107,6 @@ class LoginScreenView: UIView {
         textView.textAlignment = .left
         addSubview(textView)
     }
-
-
     
     func configureAgreement() {
         agreementLabel.text = "Tomofilya ürün ve hizmetleri ile ilgili ticari elektronik ileti (e-posta ve sms) almak istiyorum."
@@ -121,8 +118,6 @@ class LoginScreenView: UIView {
         agreementButton.layer.cornerRadius = 12
         agreementButton.layer.borderColor = UIColor.black.cgColor
         agreementButton.backgroundColor = .white
-        
-        
         
         NSLayoutConstraint.activate([
             agreementButton.widthAnchor.constraint(equalToConstant: 24),
@@ -137,152 +132,13 @@ class LoginScreenView: UIView {
         agreementStackView.spacing = 5
         agreementStackView.alignment = .center
         agreementStackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(agreementStackView)
     }
     
     func configureLabel(_ label:UILabel ,text : String  , textAligment : NSTextAlignment , name :String , size : CGFloat) {
         label.text = text
         label.textAlignment = textAligment
         label.font = UIFont(name: name, size: size)
-    }
-    
-    
-    func configureTextField(_ textField: UITextField, placeholder: String, cornerRadius: CGFloat ) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: nameTextField.frame.height))
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
-        textField.placeholder = "\t\(placeholder)"
-        textField.layer.cornerRadius = cornerRadius
-        textField.layer.borderWidth = 0.6
-        textField.layer.borderColor = UIColor.lightGray.cgColor
-        textField.backgroundColor = UIColor.clear
-        textField.textColor = UIColor.white
-        textField.textAlignment = .left
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.autocapitalizationType = .none
-        textField.leftView = paddingView
-        textField.leftViewMode = .always
-        textField.autocorrectionType = .no
-        textField.font = UIFont(name: "Poppins-Regular", size: 12)
-        addSubview(textField)
-        
-        
-    }
-    func differentLoginOptions(_ button: UIButton, title: String, backgroundColor: UIColor, textColor: UIColor , setImage : UIImage) {
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.backgroundColor = backgroundColor
-        button.setTitleColor(textColor, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = 20
-        button.clipsToBounds = true
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        button.setImage(setImage, for: .normal)
-    }
-    
-   
-    
-    func setupUI() {
-        configureButton(loginButton2, title: "Giriş Yap", backgroundColor: UIColor.white, textColor: UIColor.black, isSignUpButton: false , size: 14)
-        configureButton(signUpButton, title: "Kayıt Ol", backgroundColor: UIColor.white, textColor: UIColor.black, isSignUpButton: false, size: 14)
-        configureButton(passwordTitleButton, title: "Parolanı mı unuttun?", backgroundColor: UIColor.clear, textColor: UIColor.white, isSignUpButton: true , size: 12)
-
-        configureTextField(emailTextField, placeholder: "Email", cornerRadius: 20)
-        configureTextField(passwordTextField, placeholder: "Parola", cornerRadius: 20)
-        configureTextField(nameTextField, placeholder: "Ad-Soyad", cornerRadius: 20)
-        configureTextField(passwordTextField2, placeholder: "Parola", cornerRadius: 20)
-        configureTextField(emailTextField2, placeholder: "Email", cornerRadius: 20)
-        configureContractText(contractText, with: links)
-        differentLoginOptions(appleLoginButton, title: "Apple ile Devam Et", backgroundColor: UIColor(hex: "#0F0F0F"), textColor: UIColor.white, setImage: apple!)
-        differentLoginOptions(gmailLoginButton, title: "Google ile Devam Et", backgroundColor: UIColor(hex: "#0F0F0F"), textColor: UIColor.white, setImage: google!)
-        configureAgreement()
-       
-        
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Tomofilya")
-        addSubview(imageView)
-        
-        
-        passwordTitleButton.translatesAutoresizingMaskIntoConstraints = false
-        passwordTitleButton.setTitle("Parolanı mı unuttun?", for: .normal)
-        passwordTitleButton.titleLabel?.font = UIFont(name: "Poppins-Light", size: 12)
-        passwordTitleButton.setTitleColor(UIColor.white, for: .normal)
-        addSubview(passwordTitleButton)
-        
-        configureStackField()
-        configureStackAgreement()
-        addSubview(agreementStackView)
-        
-        showHideButton.setImage(UIImage(named: "eyeOff"), for: .normal)
-        showHideButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
-        showHideButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-       
-        showHideButton.layer.cornerRadius = 20
-        
-        passwordTextField.rightView = showHideButton
-        passwordTextField.rightViewMode = .always
-        passwordTextField.isSecureTextEntry = true
-        addSubview(showHideButton)
-        
-        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 40,paddingTop: 61.29)
-        loginSegmentedControl.anchor(top: topAnchor,bottom: nil,width: 240,height: 44,paddingTop: 150)
-        
-        signUpConstraints = [
-            
-            agreementStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            agreementStackView.widthAnchor.constraint(equalToConstant: 356),
-            agreementStackView.heightAnchor.constraint(equalToConstant: 32),
-            agreementStackView.topAnchor.constraint(equalTo:contractText.bottomAnchor, constant: 16),
-            
-            signUpButton.widthAnchor.constraint(equalToConstant: 304),
-            signUpButton.heightAnchor.constraint(equalToConstant: 40),
-            signUpButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 441.71),
-            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-                    
-            signUpProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            signUpProcessStack.heightAnchor.constraint(equalToConstant: 164),
-            signUpProcessStack.widthAnchor.constraint(equalToConstant: 342),
-            signUpProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
-            
-            optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),
-            optionsButtonStackView.heightAnchor.constraint(equalToConstant: 104),
-            optionsButtonStackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 110),
-            optionsButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            contractText.widthAnchor.constraint(equalToConstant: 354),
-            contractText.heightAnchor.constraint(equalToConstant: 60),
-            contractText.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
-            contractText.centerXAnchor.constraint(equalTo: centerXAnchor),
-          
-            
-        ]
-        
-        logInConstraints = [
-            
-            logInProcessStack.widthAnchor.constraint(equalToConstant: 342),
-            logInProcessStack.heightAnchor.constraint(equalToConstant: 104),
-            logInProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
-            logInProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),
-            optionsButtonStackView.heightAnchor.constraint(equalToConstant: 104),
-            optionsButtonStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 478.71),
-            optionsButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            loginButton2.widthAnchor.constraint(equalToConstant: 304),
-            loginButton2.heightAnchor.constraint(equalToConstant: 40),
-            loginButton2.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 293.71),
-            loginButton2.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            passwordTitleButton.widthAnchor.constraint(equalToConstant: 170),
-            passwordTitleButton.heightAnchor.constraint(equalToConstant: 17),
-            passwordTitleButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            passwordTitleButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 260.71),
-            
-        ]
-        updateUIForSelectedSegment()
     }
     
     @objc func handleLoginButton() {
@@ -321,12 +177,7 @@ class LoginScreenView: UIView {
         layoutIfNeeded()
     }
     
-    
-    @objc func togglePasswordVisibility() {
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-        let imageName = passwordTextField.isSecureTextEntry ? "showIcon" : "visible"
-        showHideButton.setImage(UIImage(named: imageName), for: .normal)
-    }
+
     
     func createStackView(arrangedSubviews: [UIView], axis: NSLayoutConstraint.Axis = .vertical, spacing: CGFloat, distribution: UIStackView.Distribution = .fillEqually, cornerRadius: CGFloat = 0, backgroundColorHex: String? = nil) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
@@ -357,23 +208,95 @@ class LoginScreenView: UIView {
         addSubview(logInProcessStack)
     }
     
-    private func spinner() {
-        let spinner = UIActivityIndicatorView()
-           var isLoading = false {
-               didSet {
-               }
-    }
-        spinner.hidesWhenStopped = true
-        spinner.color = UIColor.white
-        spinner.style = .medium
-        addSubview(spinner)
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        ])
+    private func configureAllModel() {
+        let loginButton2 = createButton(loginButton2, 14, "Giriş Yap", UIColor.black, UIColor.white)
+        addSubview(loginButton2)
+        let signUpButton = createButton(signUpButton, 14, "Kayıt Ol", UIColor.black, UIColor.white)
+        addSubview(signUpButton)
+        let passwordTitleButton = createButton(passwordTitleButton, 12, "Parolanı mı unuttun?", UIColor.white, UIColor.clear)
+        addSubview(passwordTitleButton)
+        let emailTextField = createTextField(emailTextField , "Email" , 20 , nameTextField.frame.height )
+        addSubview(emailTextField)
+        let passwordTextField = createTextField(passwordTextField , "Şifre" , 20  ,nameTextField.frame.height)
+        addSubview(passwordTextField)
+        let nameTextField = createTextField(nameTextField , "Ad-Soyad" ,20 , nameTextField.frame.height )
+        addSubview(nameTextField)
+        let passwordTextField2 = createTextField(passwordTextField2 , "Şifre" , 20 , nameTextField.frame.height )
+        addSubview(passwordTextField2)
+        let emailTextField2 = createTextField(emailTextField2 , "Email" , 20 ,nameTextField.frame.height )
+        addSubview(emailTextField2)
+        let appleLoginButton = createSocialLoginButton(appleLoginButton , "Apple ile Devam Et" , UIColor(hex:"#0F0F0F") , UIColor.white , apple!)
+        addSubview(appleLoginButton)
+        let gmailLoginButton = createSocialLoginButton(gmailLoginButton , "Google ile Devam Et" , UIColor(hex:"#0F0F0F") , UIColor.white , google!)
+        addSubview(gmailLoginButton)
         
+        showHideButton.setImage(UIImage(named: "eyeOff"), for: .normal)
+        showHideButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+        showHideButton.layer.cornerRadius = 20
+        addSubview(showHideButton)
+        
+        passwordTextField.rightView = showHideButton
+        passwordTextField.rightViewMode = .always
+        passwordTextField.isSecureTextEntry = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "Tomofilya")
+        addSubview(imageView)
     }
     
+    private func loginScreenContraints() {
+        signUpConstraints = [
+            
+            agreementStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            agreementStackView.widthAnchor.constraint(equalToConstant: 356),
+            agreementStackView.heightAnchor.constraint(equalToConstant: 32),
+            agreementStackView.topAnchor.constraint(equalTo:contractText.bottomAnchor, constant: 16),
+            
+            signUpButton.widthAnchor.constraint(equalToConstant: 304),
+            signUpButton.heightAnchor.constraint(equalToConstant: 40),
+            signUpButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 441.71),
+            signUpButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+                    
+            signUpProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            signUpProcessStack.heightAnchor.constraint(equalToConstant: 164),
+            signUpProcessStack.widthAnchor.constraint(equalToConstant: 342),
+            signUpProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
+            
+            optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),
+            optionsButtonStackView.heightAnchor.constraint(equalToConstant: 104),
+            optionsButtonStackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 110),
+            optionsButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            contractText.widthAnchor.constraint(equalToConstant: 354),
+            contractText.heightAnchor.constraint(equalToConstant: 60),
+            contractText.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
+            contractText.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+        ]
+        
+        logInConstraints = [
+            
+            logInProcessStack.widthAnchor.constraint(equalToConstant: 342),
+            logInProcessStack.heightAnchor.constraint(equalToConstant: 104),
+            logInProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
+            logInProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),
+            optionsButtonStackView.heightAnchor.constraint(equalToConstant: 104),
+            optionsButtonStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 478.71),
+            optionsButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            loginButton2.widthAnchor.constraint(equalToConstant: 304),
+            loginButton2.heightAnchor.constraint(equalToConstant: 40),
+            loginButton2.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 293.71),
+            loginButton2.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            passwordTitleButton.widthAnchor.constraint(equalToConstant: 170),
+            passwordTitleButton.heightAnchor.constraint(equalToConstant: 17),
+            passwordTitleButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            passwordTitleButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 260.71),
+            
+        ]
+    }
 
 }

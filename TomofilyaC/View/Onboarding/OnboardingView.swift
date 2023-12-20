@@ -89,16 +89,16 @@ class OnboardingView: UIView {
     
     func getTitleImage() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Tomofilya")
+        imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
         addSubview(imageView)
         // düzenle anchor
         NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalToConstant: 160),
-            imageView.heightAnchor.constraint(equalToConstant: 40),
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 17),
+            imageView.widthAnchor.constraint(equalToConstant: 180),
+            imageView.heightAnchor.constraint(equalToConstant: 140),
+            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

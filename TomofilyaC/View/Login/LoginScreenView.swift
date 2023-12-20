@@ -5,6 +5,7 @@
 //  Created by Ahmet Göktürk Kurt on 9.08.2023.
 //
 import UIKit
+import GoogleSignIn
 
 protocol LoginScreenViewDelegate: AnyObject {
     func handleLoginButton()
@@ -72,7 +73,7 @@ class LoginScreenView: UIView {
         configureAgreement()
         configureStackField()
         configureStackAgreement()
-        imageView.anchor(top: topAnchor,bottom: nil,width: 160,height: 40,paddingTop: 61.29)
+        imageView.anchor(top: topAnchor,bottom: nil,width: 180,height: 140,paddingTop: 45)
         loginSegmentedControl.anchor(top: topAnchor,bottom: nil,width: 240,height: 44,paddingTop: 150)
         loginScreenContraints()
         updateUIForSelectedSegment()
@@ -177,8 +178,6 @@ class LoginScreenView: UIView {
         layoutIfNeeded()
     }
     
-
-    
     func createStackView(arrangedSubviews: [UIView], axis: NSLayoutConstraint.Axis = .vertical, spacing: CGFloat, distribution: UIStackView.Distribution = .fillEqually, cornerRadius: CGFloat = 0, backgroundColorHex: String? = nil) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.axis = axis
@@ -240,12 +239,13 @@ class LoginScreenView: UIView {
         passwordTextField.isSecureTextEntry = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Tomofilya")
+        imageView.image = UIImage(named: "logo")
         addSubview(imageView)
+
     }
     
     private func loginScreenContraints() {
-        signUpConstraints = [
+        signUpConstraints = [ 
             
             agreementStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             agreementStackView.widthAnchor.constraint(equalToConstant: 356),
@@ -260,11 +260,11 @@ class LoginScreenView: UIView {
             signUpProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpProcessStack.heightAnchor.constraint(equalToConstant: 164),
             signUpProcessStack.widthAnchor.constraint(equalToConstant: 342),
-            signUpProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
+            signUpProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 65),
             
             optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),
             optionsButtonStackView.heightAnchor.constraint(equalToConstant: 104),
-            optionsButtonStackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 110),
+            optionsButtonStackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 55),
             optionsButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             contractText.widthAnchor.constraint(equalToConstant: 354),
@@ -278,7 +278,7 @@ class LoginScreenView: UIView {
             
             logInProcessStack.widthAnchor.constraint(equalToConstant: 342),
             logInProcessStack.heightAnchor.constraint(equalToConstant: 104),
-            logInProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 124.71),
+            logInProcessStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 80),
             logInProcessStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             optionsButtonStackView.widthAnchor.constraint(equalToConstant: 342),

@@ -2,29 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GIDClientID</key>
-	<string>1057080850841-gd95cbejk9flds8o1jl9kq09r7a90akk.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.agk.automotive</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1057080850841-gd95cbejk9flds8o1jl9kq09r7a90akk</string>
+				<string>com.googleusercontent.apps.1098737612863-kkjs816l0cg6orsa1n8khhd7tio7u59r</string>
 			</array>
-			<key>CFBundleURLName</key>
-			<string>com.agk.TomofilyaC</string>
 		</dict>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Poppins-Regular.ttf</string>
-		<string>Poppins-Light.ttf</string>
-	</array>
+	<key>GIDClientID</key>
+	<string>1057080850841-gd95cbejk9flds8o1jl9kq09r7a90akk.apps.googleusercontent.com</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-Light.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

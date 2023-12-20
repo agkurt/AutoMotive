@@ -9,16 +9,15 @@ import Foundation
 
 enum UserNetworkServiceRoute : URLRequestProtocol {
     
-    static let baseURL = "https://tomofilya.azurewebsites.net"
+    static let baseURL = ""
     
 case register(fullName: String, email: String, password: String)
 case verifyCode(email: String, code: String)
-case login(email  :String , password : String)
+case login(email :String , password : String)
 case socialLogin(token: String, platform: String)
 case sendVerificationCode(email: String)
 case passwordReset(email: String, code: String, password: String)
 
-    //create URL
     var url : URL {
         switch self {
         case .sendVerificationCode(let email):
@@ -30,7 +29,7 @@ case passwordReset(email: String, code: String, password: String)
             return URL(string: UserNetworkServiceRoute.baseURL + path)!
         }
     }
-    // create path
+    
     var path: String {
         switch self {
         case .register:

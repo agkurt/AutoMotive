@@ -37,7 +37,7 @@ class HomeView: UIView {
         setupView()
     }
     
-    private static func createSearchBar() -> UISearchBar {
+     static func createSearchBar() -> UISearchBar {
         let searchBar = UISearchBar()
         
         configureSearchBarAppearance(searchBar)
@@ -78,13 +78,11 @@ class HomeView: UIView {
         setupCollectionView()
         configureLabel(categoryLabel)
     }
-    
-    
-    private func setupSearchBar() {
+     func setupSearchBar() {
         addSubview(searchBar)
         NSLayoutConstraint.activate([
             searchBar.centerXAnchor.constraint(equalTo: centerXAnchor),
-            searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 68),
+            searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 19),
             searchBar.widthAnchor.constraint(equalToConstant: 350),
             searchBar.heightAnchor.constraint(equalToConstant: 44)
         ])

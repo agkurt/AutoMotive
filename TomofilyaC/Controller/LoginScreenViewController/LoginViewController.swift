@@ -47,10 +47,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
         loginScreenView.loginSegmentedControl.selectedSegmentIndex = 0
         loginScreenView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginScreenView.agreementButton.addTarget(self, action: #selector(handleAgreementTab), for: .touchUpInside)
-        loginScreenView.appleLoginButton.addTarget(self, action: #selector(handleAppleLoginButton), for: .touchUpInside)
         loginScreenView.gmailLoginButton.addTarget(self, action: #selector(handleGoogleLoginButton), for: .touchUpInside)
-
-        
     }
     
     @objc func loginButtonTapped() {
@@ -145,9 +142,7 @@ class LoginViewController : UIViewController, LoginScreenViewDelegate , UITextVi
             }
         }
     }
-    @objc func handleAppleLoginButton() {
-        socialLogin.handleAppleLoginButton()
-    }
+
     @objc func handleGoogleLoginButton() {
         socialLogin.handleGoogleLoginButton()
     }
